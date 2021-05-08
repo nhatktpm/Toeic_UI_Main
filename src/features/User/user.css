@@ -1,0 +1,65 @@
+.sidebar-user {
+    height: 100%;
+    width: 250px;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    background-color: aquamarine;
+}
+.main-user {
+    margin-left: 280px;
+    
+}
+
+.red {
+    background-color: brown;
+    height: 50px;
+    position: relative;
+    
+}
+.abso{
+position: absolute;
+bottom: 0px;
+right: 0px;
+height: 20px;
+width: 100px;
+background-color: blueviolet;
+
+}
+
+.xanh {
+    background-color: aquamarine;
+}
+.trang {
+    background-color: rgb(121, 148, 139);
+}
+
+.helo{
+    height: 50px;
+    background-color: blanchedalmond;
+    position: relative;
+  
+}
+
+.helo-con{
+    position: absolute;
+    right: 0px;
+    background-color: aquamarine;
+    height: 20px;
+    opacity: 0.5;
+}
+
+.test{
+    background-color: aqua;
+    height: 30px;
+}
+
+.ea{
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: aquamarine;
+}
+
+.box-name{
+
+}
