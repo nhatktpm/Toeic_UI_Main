@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField } from '@material-ui/core';
+import { TextareaAutosize} from '@material-ui/core';
 import { Controller } from 'react-hook-form';
 
-InputField.propTypes = {
+TextareaField.propTypes = {
   form: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 
@@ -11,7 +11,7 @@ InputField.propTypes = {
   disable: PropTypes.bool,
 };
 
-function InputField(props) {
+function TextareaField(props) {
   const { form, name, label, disable } = props;
   const { control } = form;
 
@@ -21,7 +21,7 @@ function InputField(props) {
       name={name}
       control={control}
       render={({ field: { onChange, onBlur, value, name }, fieldState: { invalid, error } }) => (
-        <TextField
+        <TextareaAutosize
           margin="normal"
           variant="outlined"
           fullWidth
@@ -39,4 +39,4 @@ function InputField(props) {
   );
 }
 
-export default InputField;
+export default TextareaField;

@@ -13,6 +13,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import { Link, NavLink } from 'react-router-dom';
+import '../Sidebar/sidebar.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,5 +115,6 @@ export default function SideBar() {
       </ListItem>
 
     </List>
+    
   );
 }

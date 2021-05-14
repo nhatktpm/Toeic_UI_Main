@@ -7,12 +7,11 @@ export const getListPart = createAsyncThunk('admin/getListPart', async () => {
     const data = await listPartApi.getAll();
     return data.data.parts;
 });
-export const editPart = createAsyncThunk('admin/editPart', async (id, part) => {
-    const data = await listPartApi.update(id, part)    
-    return part;
+export const editPart = createAsyncThunk('admin/editPart', async (result) => {
+    const data = await listPartApi.update(result.id, result.part)
+    console.log(result);
+    return result.part
 });
-
-
 
 const PartSlice = createSlice({
     name: 'admin',
@@ -36,13 +35,14 @@ const PartSlice = createSlice({
             state.listPart = action.payload
         },
         [editPart.fulfilled]: (state, action) => {
-            // const newPart = action.payload;
-            // const partIndex = state.listPart.findIndex(part => part.id === newPart._id);
+            const newPart = action.payload;
+           
+            const partIndex = state.listPart.findIndex(part => part._id === newPart.id);
 
-            // if (partIndex >= 0) {
-            //     state.listPart[partIndex] = newPart;
-            // }
-            console.log("helo");
+            if (partIndex >= 0) {
+                state.listPart[partIndex] = newPart;
+            }
+           
         },
         [editPart.rejected]: (state, action) => {
             console.log('helo');

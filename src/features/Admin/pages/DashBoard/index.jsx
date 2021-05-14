@@ -5,7 +5,8 @@ import { Switch, Route, useRouteMatch } from 'react-router';
 
 
 
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, Paper, Typography
+ } from '@material-ui/core';
 
 
 import Part from '../../components/List/ListPart';
@@ -32,22 +33,28 @@ const DashBoard = props => {
 
     const useStyles = makeStyles((theme) => ({
         root: {
-
-        },
-
-        left: {
-            width: '250px',
         },
 
         right: {
             flex: '1 1 0',
-            marginLeft: '260px'
+            paddingTop : '30px'
+
         },
         container: {
-            minWidth: '100%',
-            paddingRight: '0px'
+            // minWidth: '100%',
+            // paddingRight: '0px'
+            marginLeft: '290px'
         },
-
+        header: {
+            height: '50px',
+            padding: '10px 0',
+            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+            borderRadius : '80px'
+          
+        },
+        content: {
+            height: '90vh'
+        }
 
 
     }));
@@ -60,69 +67,81 @@ const DashBoard = props => {
                 <SideBar />
             </Box>
             <Box>
-                <Container className={classes.container} >
+                <Box className={classes.container} >
                     <Grid container >
-                        <Grid item className={classes.right}>
-                            <Paper>
-                                <Switch>
-                                    <Route path={match.url} exact>
+                        <Grid item lg={12}>
+                            <Box className={classes.header} >
+                                <Box className='contai-header'>
+                                    <Box className='ad-brand' >
+                                    <Typography variant='h5'>DashBoard </Typography>
+                                    </Box>
+                                    <Box className='ad-find'>Tim kiem</Box>
+                                    <Box className='ad-user'>User</Box>
+                                </Box>
+                            </Box>
+                        </Grid>
 
-                                    </Route>
-                                    <Route path={`${match.url}/list-part`}>
-                                        <Part />
-                                    </Route>
-                                    <Route path={`${match.url}/parts/:idPart/edit`}>
-                                        <EditPart />
-                                    </Route>
+                        <Grid item lg={12} className={classes.right}>
+                            <Paper >
+                                <Box className={classes.content}>
+                                    <Switch>
+                                        <Route path={match.url} exact>
 
-                                    {/* Route Part 1 */}
-                                    <Route path={`${match.url}/topic-1/:idPart`} exact>
-                                        <Topic1 />
-                                    </Route>
-                                    <Route path={`${match.url}/topic-1/:idPart/add`}>
-                                        <AddTopic1 />
-                                    </Route>
+                                        </Route>
+                                        <Route path={`${match.url}/list-part`}>
+                                            <Part />
+                                        </Route>
+                                        <Route path={`${match.url}/parts/:idPart/edit`}>
+                                            <EditPart />
+                                        </Route>
 
-                                    <Route path={`${match.url}/topic-1/:idPart/edit`}>
-                                        <EditTopic1 />
-                                    </Route>
+                                        {/* Route Part 1 */}
+                                        <Route path={`${match.url}/topic-1/:idPart`} exact>
+                                            <Topic1 />
+                                        </Route>
+                                        <Route path={`${match.url}/topic-1/:idTopic/add`}>
+                                            <AddTopic1 />
+                                        </Route>
 
-                                    {/* Route Part 2 */}
-                                    <Route path={`${match.url}/topic-2/:idPart`} exact>
-                                        <Topic2 />
-                                    </Route>
-                                    <Route path={`${match.url}/topic-2/:idPart/add`}>
-                                        <AddTopic2 />
-                                    </Route>
-                                    <Route path={`${match.url}/topic-2/:idPart/edit`}>
-                                        <EditTopic2 />
-                                    </Route>
+                                        <Route path={`${match.url}/topic-1/:idTopic/edit`}>
+                                            <EditTopic1 />
+                                        </Route>
 
-                                    {/* Route Part 2 */}
-                                    <Route path={`${match.url}/question-1/:idTopic`} exact>
-                                        <Question1 />
-                                    </Route>
-                                    <Route path={`${match.url}/question-1/:idQuestion/add`}>
-                                        <AddQuestion1 />
-                                    </Route>
-                                    <Route path={`${match.url}/question-1/:idQuestion/edit`}>
-                                        <EditQuestion1
-                                        />
-                                    </Route>
+                                        {/* Route Part 2 */}
+                                        <Route path={`${match.url}/topic-2/:idPart`} exact>
+                                            <Topic2 />
+                                        </Route>
+                                        <Route path={`${match.url}/topic-2/:idPart/add`}>
+                                            <AddTopic2 />
+                                        </Route>
+                                        <Route path={`${match.url}/topic-2/:idPart/edit`}>
+                                            <EditTopic2 />
+                                        </Route>
 
+                                        {/* Route Part 2 */}
+                                        <Route path={`${match.url}/question-1/:idTopic`} exact>
+                                            <Question1 />
+                                        </Route>
+                                        <Route path={`${match.url}/question-1/:idTopic/add`}>
+                                            <AddQuestion1 />
+                                        </Route>
+                                        <Route path={`${match.url}/question-1/:idQuestion/edit`}>
+                                            <EditQuestion1
+                                            />
+                                        </Route>
 
+                                        {/* Trash */}
+                                        <Route path={`${match.url}/trash`}>
+                                            <ListTrash />
+                                        </Route>
 
-                                    {/* Trash */}
-                                    <Route path={`${match.url}/trash`}>
-                                        <ListTrash />
-                                    </Route>
-
-                                </Switch>
+                                    </Switch>
+                                </Box>
                             </Paper>
 
                         </Grid>
                     </Grid>
-                </Container>
+                </Box>
             </Box>
         </Box>
 

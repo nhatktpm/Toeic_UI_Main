@@ -1,6 +1,6 @@
 import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { getListTopic } from 'features/Admin/Slice/TopicSlice';
+import { deleteSoftTopic1, getListTopic } from 'features/Admin/Slice/TopicSlice';
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,8 +29,10 @@ function Topic1(props) {
     history.push(`/admin/topic-1/${idPart}/edit`);
   }
 
-  const handlDeleteTopic = (idTopic) => {
-    console.log("id Topic", idTopic)
+  const handlDeleteTopic = async (idTopic) => {
+    const action = deleteSoftTopic1(idTopic)
+    const resultAction = await dispath(action)
+
   }
 
   const handleAddTopic = (idPart) => {
@@ -48,7 +50,6 @@ function Topic1(props) {
   return (
     <div>
       <Box>
-
         <Grid container>
           <Grid item lg={12} >
             list topic

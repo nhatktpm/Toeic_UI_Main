@@ -25,13 +25,13 @@ function ListTrash(props) {
   const handleRestoreTopic = async (idTrash) => {
     const action = restoreTopic(idTrash)
     const rsRestore = await dispath(action)
-    console.log(rsRestore);
+    
   }
 
   const handlDeleteTopic = async (idTrash) => {
     const action = deleteTopic(idTrash)
     const rsRestore = await dispath(action)
-    console.log(rsRestore);
+    
   }
 
   const handleAddTopic = (a) => {

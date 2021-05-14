@@ -13,7 +13,6 @@ function App() {
         <Route path="/admin" component={AdminFeature} />
         <Route path="/count" component={CounterFeature} />
       </Switch>
-
     </div>
   );
 }

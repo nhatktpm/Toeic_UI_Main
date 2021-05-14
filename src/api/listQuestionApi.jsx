@@ -1,13 +1,13 @@
 import axiosClient from "./axiosClient";
 
-const listTopicAPI = {
+const listQuestionAPI = {
     getAll(id) {
         const url = `/admin/question-1/${id}`;
         return axiosClient.get(url);
     },
-    get(params) {
-        const url = `/admin/question-1/detail/${params}`;
-        return axiosClient.get(url, { params });
+    get(id) {
+        const url = `/admin/question-1/detail/${id}`;
+        return axiosClient.get(url, id);
 
     },
     add(id,data) {
@@ -24,4 +24,4 @@ const listTopicAPI = {
     }
 };
 
-export default listTopicAPI;
+export default listQuestionAPI;

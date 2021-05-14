@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Button, Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { getListPart } from 'features/Admin/Slice/PartSlice';
 import React, { useEffect } from 'react';
@@ -15,7 +15,7 @@ function Part(props) {
   const handleClick = async () => {
     const action = getListPart()
     const resultAction = await dispath(action)
-    
+
     // // console.log("part trong trang list part", part)  
   }
 
@@ -30,49 +30,67 @@ function Part(props) {
     handleClick()
   }, []);
   let i = 0;
+
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+    },
+    listPart : {
+      padding : '30px 10px'
+    },
+    titlePart : {
+      fontSize : '1.5rem',
+      fontWeight: '400',
+      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    
+    }
+
+  }));
+
+  const classes = useStyles();
+
   return (
-    <div>
-      <Box>
-        <Container>
-          <Grid container>
-            <Grid item lg={12} >
-              asdadasd
-            </Grid>
-            <Grid item lg={12}>
-              <table class="content-table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>IMG</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
 
-                  {partState.map((part) => (
+    <Box className={classes.listPart}>
+      <Grid container>
+        <Grid item lg={12} >
+          <Box className={classes.titlePart}> This Is List Part</Box>
+        </Grid>
+        <Grid item lg={12}>
+        
+          <table class="content-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>IMG</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
 
-                    <tr key={part._id}>
-                      <td>{i++}</td>
-                      <td>{part.name}</td>
-                      <td> {part.img}</td>
-                      <td>{part.slug}</td>
-                      <td>
-                        <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
-                        <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>
-                      </td>
-                    </tr>
-                  ))}
+              {partState.map((part) => (
 
-                </tbody>
-              </table>
-            </Grid>
-          </Grid>
-        </Container>
+                <tr key={part._id}>
+                  <td>{i++}</td>
+                  <td>{part.name}</td>
+                  <td> {part.img}</td>
+                  <td>{part.slug}</td>
+                  <td>
+                    <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
+                    <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>
+                  </td>
+                </tr>
+              ))}
 
-      </Box>
-    </div>
+            </tbody>
+          </table>
+        </Grid>
+      </Grid>
+
+    </Box>
+
   );
 }
 

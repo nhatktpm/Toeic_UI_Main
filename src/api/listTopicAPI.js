@@ -24,7 +24,7 @@ const listTopicAPI = {
     },
     deleteSoft(id) {
         const url = `/admin/topic-1/${id}`;
-        return axiosClient.delete(url);
+        return axiosClient.post(url);
     },
     restore(id ) {
         const url = `/admin/topic/${id}`;

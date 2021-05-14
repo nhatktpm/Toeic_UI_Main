@@ -14,13 +14,11 @@ function EditPart(props) {
   const dispath = useDispatch()
 
   const handleEditPartFormSubmit = async (values) => {
-    // let data = {
-    //   name: values.name,
-    //   img: values.img,
-    //   descrip: values.descrip,
-    //   slug: values.slug,
-    // }
-    const action = editPart(idPart, values)
+   const data = {
+     id : idPart,
+     part : values
+   }
+    const action = editPart(data)
     const resultAction = await dispath(action)   
   };
   const {
@@ -38,7 +36,7 @@ function EditPart(props) {
   return (
     <div>
 
-      <PartForm initialValues={initialValues} onSubmit={handleEditPartFormSubmit} />
+      <PartForm  initialValues={initialValues} onSubmit={handleEditPartFormSubmit} />
 
     </div>
   );

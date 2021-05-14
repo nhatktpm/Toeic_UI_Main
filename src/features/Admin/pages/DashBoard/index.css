@@ -1,7 +1,19 @@
 .sidebar{
     background-color: aqua;
     height: 100%;
-    width: 280px;
+    width: 260px;
     position: fixed;
 }
+.contai-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    
+}
+.ad-brand{
 
+}
+.ad-find{
+
+}
+.ad-user{}
