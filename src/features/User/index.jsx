@@ -20,9 +20,11 @@ function User(props) {
                 <Grid className="right" container>
                     <Grid item lg={12}> helo</Grid>
                     <Grid item lg={6}> <Box component='div' display='block'>asfdaasdasdasdasdasds</Box></Grid>
-                    <Grid item lg={6}> heloasfasdfa</Grid>
+                    <Grid item lg={6}> 
+                    <Box className='btn'>this is button </Box>
+                    </Grid>
                     
-                    <Box>asfdas</Box>
+                    
                 </Grid>
             </Box>
 

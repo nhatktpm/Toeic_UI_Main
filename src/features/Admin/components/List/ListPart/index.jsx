@@ -4,6 +4,12 @@ import { getListPart } from 'features/Admin/Slice/PartSlice';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+
+
+
+
 import './index.css'
 
 function Part(props) {
@@ -35,14 +41,14 @@ function Part(props) {
   const useStyles = makeStyles((theme) => ({
     root: {
     },
-    listPart : {
-      padding : '30px 10px'
+    listPart: {
+      padding: '30px 10px'
     },
-    titlePart : {
-      fontSize : '1.5rem',
+    titlePart: {
+      fontSize: '1.5rem',
       fontWeight: '400',
       background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    
+
     }
 
   }));
@@ -50,45 +56,60 @@ function Part(props) {
   const classes = useStyles();
 
   return (
-
     <Box className={classes.listPart}>
       <Grid container>
-        <Grid item lg={12} >
-          <Box className={classes.titlePart}> This Is List Part</Box>
-        </Grid>
         <Grid item lg={12}>
-        
-          <table class="content-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>IMG</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Box className='ad-table'>
 
-              {partState.map((part) => (
+            <Box className='table-title'>
+              <Box className='content-title'>
+                <AcUnitIcon className='table-icon' />
+                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+              </Box>
+            </Box>
+            <Box className='button-add'>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                startIcon={<AddCircleIcon />}
+              >
+                Add Part
+      </Button>
+            </Box>
+            <Box className='table-body'>
+              <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>IMG</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                <tr key={part._id}>
-                  <td>{i++}</td>
-                  <td>{part.name}</td>
-                  <td> {part.img}</td>
-                  <td>{part.slug}</td>
-                  <td>
-                    <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
-                    <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>
-                  </td>
-                </tr>
-              ))}
+                  {partState.map((part) => (
 
-            </tbody>
-          </table>
+                    <tr key={part._id}>
+                      <td>{i++}</td>
+                      <td>{part.name}</td>
+                      <td> {part.img}</td>
+                      <td>{part.slug}</td>
+                      <td>
+                        <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
+                        <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>
+                      </td>
+                    </tr>
+                  ))}
+
+                </tbody>
+              </table>
+            </Box>
+          </Box>
         </Grid>
       </Grid>
-
     </Box>
 
   );

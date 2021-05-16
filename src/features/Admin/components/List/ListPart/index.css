@@ -1,18 +1,20 @@
 .content-table {
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 0.9em;
+    font-size: 1em;
     min-width: 100%;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
 }
 
 .content-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
+    /* background-color: #009879; */
+    color: #5a5555;
     text-align: left;
-    font-weight: bold;
+    font-weight: 100;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .content-table th,
@@ -22,6 +24,7 @@
 
 .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
+
 }
 
 .content-table tbody tr:nth-of-type(even) {
@@ -29,10 +32,72 @@
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    /* border-bottom: 2px solid #009879; */
 }
 
 .content-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
 }
+
+.ad-table {
+    border: 1 solid black;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 6px;
+
+    color: rgb(19, 18, 18);
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+}
+
+.ad-table .table-title {
+}
+
+.ad-table .table-title .content-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    /* background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%); */
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.ad-table .table-icon {
+    /* position: absolute; */
+
+    background: aqua;
+    padding: 15px;
+    font-size: 40px;
+    transform: translateY(-25%); 
+  
+    color: #fff;
+    
+    background: linear-gradient(60deg, #ec407a, #d81b60);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(233 30 99 / 40%);
+    border-radius: 3px;
+}
+
+.ad-table .part-text {
+    padding-left: 15px;
+}
+
+.button-add{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.table-body{
+margin: 0 20px;
+}
+
+.content-table{}
+
+
+
+

@@ -1,19 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
+
 import { Link, NavLink } from 'react-router-dom';
 import '../Sidebar/sidebar.css'
+import { Box, Typography } from '@material-ui/core';
+
+// Icon
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,11 +18,8 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(5),
   },
-  icon: {
-    flex: 1,
-    minWidth: 0,
-    margintop: 4,
-    marginbottom: 4
+  textCantai: {
+
   }
 }));
 
@@ -41,80 +32,42 @@ export default function SideBar() {
   };
 
   return (
-    <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      className={classes.root}
-    >
-      <ListItem button>
-        <ListItemIcon>
-          <SendIcon />
-        </ListItemIcon>
-        <Link to="/admin">Home</Link>
-      </ListItem>
+    <Box>
+      <Box>
+        <Box className='ad-logo-contai' >
+          <Typography variant='h5' className='ad-textlogo'>
+            INU EngLish
+          </Typography>
+        </Box>
+      </Box>
+      <Box>
+        <nav>
+          <ul>
+            <li className='sb-item'> <Box>
+              <Link className='link'><AcUnitIcon className='mr-icon' color="secondary" /> Manager User</Link>
+            </Box></li>
 
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <Link to="/admin/list-part">List Part</Link>
-      </ListItem>
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <Link className={classes.icon} to="/admin/list-part">List Part</Link>
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+            <li className='sb-item'> <Box>
+              <Link to="/admin/list-part" className='link'><AcUnitIcon className='mr-icon' color="secondary" />  Manager Part</Link>
+            </Box></li>
 
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+            <li className='sb-item'> <Box>
+              <Link className='link'><AcUnitIcon className='mr-icon' color="secondary" />  Manager Topic</Link>
+            </Box></li>
 
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+            <li className='sb-item'> <Box>
+              <Link className='link'><AcUnitIcon className='mr-icon' color="secondary" />  Manager Contact</Link>
+            </Box></li>
 
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+            <li className='sb-item'> <Box>
+              <Link  to="/admin/trash" className='link'><AcUnitIcon className='mr-icon' color="secondary" />  Manager Trash</Link>
+            </Box></li>
 
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <Link to="/">Home</Link>
-          </ListItem>
+          </ul>
+        </nav>
+      </Box>
 
+    </Box>
 
-        </List>
-      </Collapse>
-
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <Link to="/admin/trash">List Trash</Link>
-      </ListItem>
-
-    </List>
-    
   );
 }

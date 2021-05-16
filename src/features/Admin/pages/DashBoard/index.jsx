@@ -5,8 +5,9 @@ import { Switch, Route, useRouteMatch } from 'react-router';
 
 
 
-import { Box, Container, Grid, makeStyles, Paper, Typography
- } from '@material-ui/core';
+import {
+    Box, Container, Grid, makeStyles, Paper, Typography
+} from '@material-ui/core';
 
 
 import Part from '../../components/List/ListPart';
@@ -37,24 +38,28 @@ const DashBoard = props => {
 
         right: {
             flex: '1 1 0',
-            paddingTop : '30px'
+            paddingTop: '30px'
 
         },
-        container: {
-            // minWidth: '100%',
-            // paddingRight: '0px'
-            marginLeft: '290px'
+        container: {           
+            marginLeft: '280px',
+            
         },
         header: {
             height: '50px',
             padding: '10px 0',
-            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-            borderRadius : '80px'
-          
+            
+            borderRadius: '2px'
+
         },
         content: {
             height: '90vh'
+        },
+        bg : {
+            backgroundColor: '#eeeeee'
         }
+
+    
 
 
     }));
@@ -64,16 +69,18 @@ const DashBoard = props => {
     return (
         <Box>
             <Box component="div" className="sidebar">
-                <SideBar />
+                <Box className="ad-bg">
+                    <SideBar />
+                </Box>
             </Box>
-            <Box>
+            <Box className={classes.bg} >
                 <Box className={classes.container} >
                     <Grid container >
                         <Grid item lg={12}>
                             <Box className={classes.header} >
                                 <Box className='contai-header'>
                                     <Box className='ad-brand' >
-                                    <Typography variant='h5'>DashBoard </Typography>
+                                        <Typography variant='h5'>DashBoard </Typography>
                                     </Box>
                                     <Box className='ad-find'>Tim kiem</Box>
                                     <Box className='ad-user'>User</Box>
@@ -82,7 +89,7 @@ const DashBoard = props => {
                         </Grid>
 
                         <Grid item lg={12} className={classes.right}>
-                            <Paper >
+                            <Box >
                                 <Box className={classes.content}>
                                     <Switch>
                                         <Route path={match.url} exact>
@@ -137,7 +144,7 @@ const DashBoard = props => {
 
                                     </Switch>
                                 </Box>
-                            </Paper>
+                            </Box>
 
                         </Grid>
                     </Grid>

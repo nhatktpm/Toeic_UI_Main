@@ -1,3 +1,41 @@
-.afdas{
-    
+nav ul li {
+    list-style-type: none;
+}
+.link {
+    text-decoration: none;
+    padding-left: 25px;
+    color: aliceblue;
+
+    display: flex;
+    align-items: center;
+}
+
+.ad-textlogo {
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.ad-logo-contai {
+    border-bottom: 1px solid rgb(167, 161, 161);
+}
+
+.sb-item {
+    line-height: 50px;
+    margin-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.sb-item:hover {
+    background-color: #4a4a4a;
+    border-radius: 20px;
+}
+
+nav ul {
+    padding: 0;
+}
+
+
+.mr-icon{
+    margin-right: 12px;
 }
