@@ -1,0 +1,90 @@
+.bg-banner {
+    background: url(https://demo.themewinter.com/wp/courselog/wp-content/uploads/2021/02/hero_area.jpg),
+        center center/cover no-repeat;
+    height: 100vh;
+}
+.bg-cl-banner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.836);
+    opacity: 0.6;
+}
+
+.banner {
+    position: relative;
+}
+
+.content-banner {
+    /* background-color: rgb(55, 92, 80); */
+    text-align: center;
+    transform: translateY(50%);
+}
+
+.content-banner .bn-text1 {
+    color: #f14d5d;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    margin: 0 0 25px 0;
+}
+.content-banner .bn-text2 {
+    color: #fff;
+    margin: 0 150px 50px 150px;
+    font-size: 49px;
+    font-weight: 800;
+    line-height: 60px;
+}
+
+.banner-btn-gr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.banner-btn-gr .banner-btn-1 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 23px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f14d5d;
+    padding: 20px 28px 20px 29px;
+}
+.banner-btn-gr .banner-btn-1:hover {
+    background-color: #2878eb;
+}
+.banner-btn-gr .banner-btn-2 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 23px;
+    min-width: 180px;
+    margin-left: 15px;
+
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-color: #2878eb;
+    border-radius: 5px 5px 5px 5px;
+
+    background-color: #02010100;
+    padding: 18px 28px 18px 28px;
+}
+.banner-btn-gr .banner-btn-2:hover {
+    background-color: #2878eb;
+}
+
+.content-banner .bn-text3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 23px;
+    margin: 0 0 11px 0;
+}
+.content-banner .bn-text4 {
+    color: #f14d5d;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    margin: 0 0 11px 0;
+}

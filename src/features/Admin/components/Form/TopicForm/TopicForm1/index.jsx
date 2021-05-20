@@ -1,7 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '@material-ui/core';
+
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import InputField from 'components/form-controls/InputField';
 import TextareaField from 'components/form-controls/Textarea';
+
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
 
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -50,23 +54,98 @@ function TopicForm1(props) {
     const { isSubmitting } = form.formState;
 
     return (
-        <form onSubmit={form.handleSubmit(handleSubmit)}>
-            <InputField name="nameTopic" label="Topic Name" form={form} />
-            <InputField name="descrip" label="Description" form={form} />
-            {/* <InputField name="translate_vn" label="Translate VN" form={form} />
-            <InputField name="translate_eng" label="Translate Eng" form={form} /> */}
-            <Button
-                disabled={isSubmitting}
-                type="submit"
-                // className={classes.submit}
-                variant="contained"
-                color="primary"
-                fullWidth
-                size="large"
-            >
-              {editMode ? "Edit Topic" : "Add Topic"}
-            </Button>
-        </form>
+
+
+        <Box className='content-list'>
+            <Grid container>
+                <Grid item lg={12}>
+                    <Box className='ad-table'>
+
+                        <Box className='table-title'>
+                            <Box className='content-title'>
+                                <AcUnitIcon className='table-icon' />
+                                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                            </Box>
+                        </Box>
+                        <Box className='button-add'>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                // className={classes.button}
+                                startIcon={<AddCircleIcon />}
+                            >
+                                Add Part
+                            </Button>
+                        </Box>
+                        <Box className='table-body'>
+                            <form onSubmit={form.handleSubmit(handleSubmit)}>
+
+                                <Grid container spacing={3}>
+                                    <Grid item md={9}>
+
+                                        <Grid container>
+                                            <Grid item md={12}>
+                                                <Box className='inp'>
+                                                    <InputField name="nameTopic" label="Topic Name" form={form} />
+                                                </Box>
+                                            </Grid>
+
+                                            <Grid item md={12}>
+                                                <Box className='inp'>
+                                                    <InputField name="descrip" label="Description" form={form} />
+                                                </Box>
+                                            </Grid>
+
+                                            <Grid item md={12}>
+                                                <Box className='inp'>
+                                                    <InputField name="d" label="Translate VN" form={form} />
+                                                </Box>
+                                            </Grid>
+
+                                            <Grid item md={12}>
+                                                <Box className='inp'>
+                                                    <InputField name="d" label="Translate English" form={form} />
+                                                </Box>
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                    <Grid item md={3}>
+                                        <Box className='inp'>
+                                            <InputField name="img" label="Upload File" form={form} />
+                                        </Box>
+
+                                        <Box className='inp'>
+                                            <InputField name="asd" label="Upload File" form={form} />
+                                        </Box>
+
+                                    </Grid>
+
+
+                                </Grid>
+                                <Grid item md={12}>
+                                    <Box className='btn-edit-part' mt={5}>
+                                        <Button
+                                            disabled={isSubmitting}
+                                            type="submit"
+                                            // className={classes.submit}
+                                            variant="contained"
+                                            color="primary"
+
+                                            size="large"
+                                        >
+                                            {editMode ? "Edit Topic" : "Add Topic"}
+                                        </Button>
+                                    </Box>
+                                </Grid>                                
+                            </form>
+                        </Box>
+                    </Box>
+                </Grid>
+            </Grid>
+        </Box>
     );
 }
 

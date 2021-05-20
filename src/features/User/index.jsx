@@ -1,37 +1,16 @@
-import { Box, Container, Grid } from '@material-ui/core';
-import { useSnackbar } from 'notistack';
 import React from 'react';
-import '../User/user.css'
+import { Route, Switch, useRouteMatch } from 'react-router';
+import '../User/user.css';
+import Home from './pages/Home';
+
 
 function User(props) {
 
-    const { enqueueSnackbar } = useSnackbar();
-
-    const showNoti = () => {
-        enqueueSnackbar('click thanh cong', { variant: 'success' })
-    }
-
+    const match = useRouteMatch();
     return (
-        <Box>
-            <Box onClick={() => showNoti()} component="div" className="sidebar-user">
-                SideBar
-            </Box>
-            <Box>
-                <Grid className="right" container>
-                    <Grid item lg={12}> helo</Grid>
-                    <Grid item lg={6}> <Box component='div' display='block'>asfdaasdasdasdasdasds</Box></Grid>
-                    <Grid item lg={6}> 
-                    <Box className='btn'>this is button </Box>
-                    </Grid>
-                    
-                    
-                </Grid>
-            </Box>
-
-
-        </Box>
-
-
+        <Switch>
+            <Route path={match.url} component={Home} />
+        </Switch>
     );
 }
 

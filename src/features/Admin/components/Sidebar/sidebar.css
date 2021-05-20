@@ -10,6 +10,10 @@ nav ul li {
     align-items: center;
 }
 
+a.active{
+
+}
+
 .ad-textlogo {
     color: white;
     text-align: center;
@@ -36,6 +40,8 @@ nav ul {
 }
 
 
-.mr-icon{
+.link .mr-icon{
     margin-right: 12px;
+    color: aliceblue;
 }
+

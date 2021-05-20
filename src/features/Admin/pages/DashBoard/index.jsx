@@ -41,25 +41,25 @@ const DashBoard = props => {
             paddingTop: '30px'
 
         },
-        container: {           
+        container: {
             marginLeft: '280px',
-            
+
         },
         header: {
             height: '50px',
             padding: '10px 0',
-            
+
             borderRadius: '2px'
 
         },
         content: {
             height: '90vh'
         },
-        bg : {
+        bg: {
             backgroundColor: '#eeeeee'
         }
 
-    
+
 
 
     }));
@@ -89,7 +89,7 @@ const DashBoard = props => {
                         </Grid>
 
                         <Grid item lg={12} className={classes.right}>
-                            <Box >
+                            <Container maxWidth="lg" disableGutters={true} >
                                 <Box className={classes.content}>
                                     <Switch>
                                         <Route path={match.url} exact>
@@ -144,7 +144,7 @@ const DashBoard = props => {
 
                                     </Switch>
                                 </Box>
-                            </Box>
+                            </Container>
 
                         </Grid>
                     </Grid>

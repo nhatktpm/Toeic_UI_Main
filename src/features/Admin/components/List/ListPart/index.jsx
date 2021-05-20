@@ -42,7 +42,7 @@ function Part(props) {
     root: {
     },
     listPart: {
-      padding: '30px 10px'
+      padding: '30px 50px'
     },
     titlePart: {
       fontSize: '1.5rem',
@@ -56,7 +56,7 @@ function Part(props) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.listPart}>
+    <Box className='content-list'>
       <Grid container>
         <Grid item lg={12}>
           <Box className='ad-table'>
@@ -71,11 +71,11 @@ function Part(props) {
               <Button
                 variant="contained"
                 color="secondary"
-                className={classes.button}
+                // className={classes.button}
                 startIcon={<AddCircleIcon />}
               >
                 Add Part
-      </Button>
+              </Button>
             </Box>
             <Box className='table-body'>
               <table class="content-table">

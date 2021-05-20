@@ -7,18 +7,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router';
 
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function Question1(props) {
 
   const {
     params: { idTopic },
     url,
-  } = useRouteMatch(); 
+  } = useRouteMatch();
 
   const history = useHistory();
   const dispath = useDispatch()
 
- 
+
 
   const handleEditQuestion = (idTopic) => {
     history.push(`/admin/question-1/${idTopic}/edit`);
@@ -31,68 +33,82 @@ function Question1(props) {
   }
 
   const handleAddQuestion = (idTopic) => {
-    history.push(`/admin/question-1/${idTopic}/add`);  }
+    history.push(`/admin/question-1/${idTopic}/add`);
+  }
 
- 
 
-    useEffect(() => {
-        (async () => {
-          const action = getListQuestion(idTopic)
-          const resultAction = await dispath(action)
-        })()
-      }, []);
+
+  useEffect(() => {
+    (async () => {
+      const action = getListQuestion(idTopic)
+      const resultAction = await dispath(action)
+    })()
+  }, []);
 
   let i = 0;
 
-  const questionState = useSelector(state => state.question.listQuestion); 
+  const questionState = useSelector(state => state.question.listQuestion);
 
   return (
-    <div>
-      <Box>
-        <Grid container>
-          <Grid item lg={12} >
-            list question
-            </Grid>
-          <Grid item lg={12}>
-            <table class="content-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>IMG</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
 
-                {questionState.map((question) => (
+    <Box className='content-list'>
+    <Grid container>
+      <Grid item lg={12}>
+        <Box className='ad-table'>
 
-                  <tr key={question._id}>
-                    <td>{i++}</td>
-                    <td>{question.nameTopic}</td>
-                    <td> {question.img}</td>
-                    <td>{question.descripTopic}</td>
-                    <td>
-                      <Button onClick={() => handleEditQuestion(question._id)}>Edit</Button>
-                      <Button onClick={() => handleDeleteQuestion(question._id)}>Delete</Button>
-                      
-                    </td>
+          <Box className='table-title'>
+            <Box className='content-title'>
+              <AcUnitIcon className='table-icon' />
+              <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+            </Box>
+          </Box>
+          <Box className='button-add'>
+            <Button
+              variant="contained"
+              color="secondary"
+              // className={classes.button}
+              startIcon={<AddCircleIcon />}
+              onClick={() => handleAddQuestion(idTopic)}
+            >
+              Add Topic
+          </Button>
+          </Box>
+          <Box className='table-body'>
+          <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>IMG</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
                   </tr>
-                ))}
+                </thead>
+                <tbody>
 
-              </tbody>
-            </table>
-          </Grid>
-          
-          <Grid item lg={12} >
-          <Button onClick={() => handleAddQuestion(idTopic)}>Add Topic</Button>
-            </Grid>
-        </Grid>
+                  {questionState.map((question) => (
 
+                    <tr key={question._id}>
+                      <td>{i++}</td>
+                      <td>{question.nameTopic}</td>
+                      <td> {question.img}</td>
+                      <td>{question.descripTopic}</td>
+                      <td>
+                        <Button onClick={() => handleEditQuestion(question._id)}>Edit</Button>
+                        <Button onClick={() => handleDeleteQuestion(question._id)}>Delete</Button>
 
-      </Box>
-    </div>
+                      </td>
+                    </tr>
+                  ))}
+
+                </tbody>
+              </table>
+          </Box>
+        </Box>
+      </Grid>
+    </Grid>
+  </Box>
+  
   );
 }
 

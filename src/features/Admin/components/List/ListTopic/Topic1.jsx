@@ -6,6 +6,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router';
 
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { useSnackbar } from 'notistack';
+
+import Swal from 'sweetalert2'
 
 function Topic1(props) {
 
@@ -14,6 +19,7 @@ function Topic1(props) {
     url,
   } = useRouteMatch();
 
+  const { enqueueSnackbar } = useSnackbar()
 
   const history = useHistory();
   const dispath = useDispatch()
@@ -30,9 +36,31 @@ function Topic1(props) {
   }
 
   const handlDeleteTopic = async (idTopic) => {
-    const action = deleteSoftTopic1(idTopic)
-    const resultAction = await dispath(action)
 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#1976d2',
+      cancelButtonColor: '#dc004e',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        (async () => {
+
+          const action = deleteSoftTopic1(idTopic)
+          const resultAction = await dispath(action)
+
+          let slipType = resultAction.type.split('/')
+          if (slipType[2] == 'fulfilled') {
+            enqueueSnackbar('Edit Part Successfully', { variant: 'success' })
+          } else {
+            enqueueSnackbar('Edit Part Not Successfully', { variant: 'error' })
+          }
+        })();
+      }
+    })
   }
 
   const handleAddTopic = (idPart) => {
@@ -43,57 +71,68 @@ function Topic1(props) {
     history.push(`/admin/question-1/${idTopic}`)
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     handleClick()
   }, []);
   let i = 0;
   return (
-    <div>
-      <Box>
-        <Grid container>
-          <Grid item lg={12} >
-            list topic
-            </Grid>
-          <Grid item lg={12}>
-            <table class="content-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>IMG</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
+    <Box className='content-list'>
+      <Grid container>
+        <Grid item lg={12}>
+          <Box className='ad-table'>
 
-                {topicState.map((topic) => (
-
-                  <tr key={topic._id}>
-                    <td>{i++}</td>
-                    <td>{topic.nameTopic}</td>
-                    <td> {topic.img}</td>
-                    <td>{topic.descripTopic}</td>
-                    <td>
-                      <Button onClick={() => handleEditTopic(topic._id)}>Edit</Button>
-                      <Button onClick={() => handlDeleteTopic(topic._id)}>Delete</Button>
-                      <Button onClick={() => handleGetListQuestion(topic._id)}>List Question</Button>
-                    </td>
+            <Box className='table-title'>
+              <Box className='content-title'>
+                <AcUnitIcon className='table-icon' />
+                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+              </Box>
+            </Box>
+            <Box className='button-add'>
+              <Button
+                variant="contained"
+                color="secondary"
+                // className={classes.button}
+                startIcon={<AddCircleIcon />}
+                onClick={() => handleAddTopic(idPart)}
+              >
+                Add Topic
+            </Button>
+            </Box>
+            <Box className='table-body'>
+              <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>IMG</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
                   </tr>
-                ))}
+                </thead>
+                <tbody>
 
-              </tbody>
-            </table>
-          </Grid>
-          
-          <Grid item lg={12} >
-          <Button onClick={() => handleAddTopic(idPart)}>Add Topic</Button>
-            </Grid>
+                  {topicState.map((topic) => (
+
+                    <tr key={topic._id}>
+                      <td>{i++}</td>
+                      <td>{topic.nameTopic}</td>
+                      <td> {topic.img}</td>
+                      <td>{topic.descripTopic}</td>
+                      <td>
+                        <Button onClick={() => handleEditTopic(topic._id)}>Edit</Button>
+                        <Button onClick={() => handlDeleteTopic(topic._id)}>Delete</Button>
+                        <Button onClick={() => handleGetListQuestion(topic._id)}>List Question</Button>
+                      </td>
+                    </tr>
+                  ))}
+
+                </tbody>
+              </table>
+            </Box>
+          </Box>
         </Grid>
-
-
-      </Box>
-    </div>
+      </Grid>
+    </Box>
   );
 }
 

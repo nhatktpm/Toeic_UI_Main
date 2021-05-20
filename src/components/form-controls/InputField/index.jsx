@@ -12,8 +12,9 @@ InputField.propTypes = {
 };
 
 function InputField(props) {
-  const { form, name, label, disable } = props;
+  const { form, name, label, disable, row } = props;
   const { control } = form;
+
 
 
   return (
@@ -24,6 +25,7 @@ function InputField(props) {
         <TextField
           margin="normal"
           variant="outlined"
+          rows={3}
           fullWidth
           label={label}
           error={invalid}
@@ -32,7 +34,7 @@ function InputField(props) {
           onBlur={onBlur}
           name={name}
           value={value}
-          disabled={disable}
+          disabled={disable}       
         />
       )}
     ></Controller>
