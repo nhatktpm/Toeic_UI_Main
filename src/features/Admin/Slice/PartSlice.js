@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import listPartApi from 'api/listPartApi';
-import userApi from 'api/userApi';
 import StorageKeys from 'constants/storage-keys';
 
 export const getListPart = createAsyncThunk('admin/getListPart', async () => {
@@ -33,6 +32,8 @@ const PartSlice = createSlice({
         [getListPart.fulfilled]: (state, action) => {
             // state.listPart.push(action.payload);
             state.listPart = action.payload
+            
+            
         },
         [editPart.fulfilled]: (state, action) => {
             const newPart = action.payload;

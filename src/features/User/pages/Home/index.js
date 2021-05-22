@@ -1,16 +1,13 @@
 import { Box, Container, Grid, makeStyles } from '@material-ui/core';
 import Banner from 'features/User/components/Banner';
+import ListTenCard from 'features/User/components/ListTenCard';
 import NavBar from 'features/User/components/NavBar';
 import React from 'react';
-import { useRouteMatch } from 'react-router';
 import '../Home/index.css';
-
-
 
 Home.propTypes = {
 
 };
-
 
 function Home(props) {
 
@@ -23,14 +20,22 @@ function Home(props) {
         link: {
             textDecoration: 'none',
             color: '#120F2D'
+        },
+        hh : {
+             height: '500px'
         }
     }));
     const classes = useStyles()
-    const match = useRouteMatch();
+  
+
+
 
     return (
-        <Box className='home'>
+        <Box className='home'>    
+
+       
             <Box >
+            
                 <NavBar> </NavBar>
             </Box>
 
@@ -39,11 +44,19 @@ function Home(props) {
             </Box>
 
             <Box>
+                <ListTenCard />
+            </Box>
+
+            <Box>
                 <Container>
-                    <Box>
+                    <Box className={classes.hh}>
                         <Grid container>
                             <Grid item lg={6}>
                                 banner left
+
+                                <p>If you click on me, I will disappear.</p>
+                                <p>Click me away!</p>
+                                <p>Click me too!</p>
                             </Grid>
                             <Grid item lg={6}>
                                 banner right

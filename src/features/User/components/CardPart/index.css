@@ -1,0 +1,54 @@
+.contai-card {
+    width: 320px;
+    box-shadow: 0px 9px 25px 0px #dadee0;
+}
+.card-part {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 0 0 rgb(35 108 214 / 10%);
+    transition: all 0.4s ease;
+}
+.card-part:hover {
+    transform: scale(1.01);
+  /* box-shadow: 5px 5px 15px rgba(107, 102, 102, 0.6); */
+}
+.card-img img {
+    height: 200px;
+    border-radius: 8px;
+}
+.card-content {
+    padding: 20px;
+}
+
+.card-content .name-card {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #120f2d;
+}
+.card-content .card-decrip {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #120f2d;
+
+    margin: 15px 0;
+}
+.card-content .card-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top: #544f80 2px solid;
+}
+
+.free {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #f14d5d;
+}
+.free {
+    color: #120f2d;
+}

@@ -1,0 +1,28 @@
+.bg-listen-card {
+    background: #fff url(https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/12/testimonial_bg.png) center
+        center/cover no-repeat;
+}
+.title-list-card {
+    text-align: center;
+}
+/* .title-list-card .text-title-card {
+} */
+
+.title-list-card .title-red {
+    color: #f14d5d;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    padding-top: 15px;
+}
+.title-list-card .title-black {
+    color: #120f2d;
+    margin: 0 150px 80px 150px;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 60px;
+}
+
+.list-l-card {
+    padding-bottom: 100px;
+}

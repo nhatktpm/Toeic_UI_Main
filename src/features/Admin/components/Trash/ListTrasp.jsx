@@ -1,21 +1,11 @@
-import { Box, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
-import { unwrapResult } from '@reduxjs/toolkit';
-import { restoreTopic } from 'features/Admin/Slice/TrashSlice';
-import { deleteTopic } from 'features/Admin/Slice/TrashSlice';
-
-
-import { getListTrash } from 'features/Admin/Slice/TrashSlice';
-
+import { Box, Button, Grid, Typography } from '@material-ui/core';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import { deleteTopic, getListTrash, restoreTopic } from 'features/Admin/Slice/TrashSlice';
+import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router';
-
-
-import AcUnitIcon from '@material-ui/icons/AcUnit';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { useSnackbar } from 'notistack';
 import Swal from 'sweetalert2';
-
 
 
 function ListTrash(props) {

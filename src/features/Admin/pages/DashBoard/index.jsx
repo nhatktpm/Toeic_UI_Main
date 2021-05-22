@@ -1,32 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SideBar from '../../components/Sidebar';
-import { Switch, Route, useRouteMatch } from 'react-router';
-
-
-
 import {
-    Box, Container, Grid, makeStyles, Paper, Typography
+    Box, Container, Grid, makeStyles, Typography
 } from '@material-ui/core';
-
-
-import Part from '../../components/List/ListPart';
-
-import AddTopic1 from '../../components/Topics/Topic-1/AddTopic1';
-import EditTopic1 from '../../components/Topics/Topic-1/EditTopic1';
-
-import '../DashBoard/index.css'
-
-import EditPart from 'features/Admin/components/Parts/EditPart';
+import Question1 from 'features/Admin/components/List/ListQuestion/Question1';
 import Topic1 from 'features/Admin/components/List/ListTopic/Topic1';
 import Topic2 from 'features/Admin/components/List/ListTopic/Topic2';
+import EditPart from 'features/Admin/components/Parts/EditPart';
+import AddQuestion1 from 'features/Admin/components/Questions/Question1/AddQuestion1';
+import EditQuestion1 from 'features/Admin/components/Questions/Question1/EditQuestion1';
 import AddTopic2 from 'features/Admin/components/Topics/Topic-2/AddTopic2';
 import EditTopic2 from 'features/Admin/components/Topics/Topic-2/EditTopic2';
 import ListTrash from 'features/Admin/components/Trash/ListTrasp';
-import Question1 from 'features/Admin/components/List/ListQuestion/Question1';
-import AddQuestion1 from 'features/Admin/components/Questions/Question1/AddQuestion1';
-import EditQuestion1 from 'features/Admin/components/Questions/Question1/EditQuestion1';
-
+import React from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router';
+import Part from '../../components/List/ListPart';
+import SideBar from '../../components/Sidebar';
+import AddTopic1 from '../../components/Topics/Topic-1/AddTopic1';
+import EditTopic1 from '../../components/Topics/Topic-1/EditTopic1';
+import '../DashBoard/index.css';
 
 
 const DashBoard = props => {
@@ -58,10 +48,6 @@ const DashBoard = props => {
         bg: {
             backgroundColor: '#eeeeee'
         }
-
-
-
-
     }));
 
     const classes = useStyles();

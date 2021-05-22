@@ -50,9 +50,9 @@
     transition: all 0.25s linear;
 }
 
-.nav-link .link-text {
+/* .nav-link .link-text {
 
-}
+} */
 .nav-link:hover,
  .link-text:hover {
 color: #3c84ed;
