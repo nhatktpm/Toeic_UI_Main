@@ -1,0 +1,37 @@
+
+.bg-title-part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 200px;
+    background-color: rgb(39, 129, 99);
+}
+
+.title-part{
+
+}
+
+/* //
+CSS Intro
+/ */
+
+.intro-left {
+    background-color: #f8f9f8;
+    margin-bottom: 80px;
+}
+.intro-title {
+}
+.intro-contai {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* 
+CSS Part content
+*/
+
+.contai-list {
+}

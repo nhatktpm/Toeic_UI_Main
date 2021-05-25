@@ -1,0 +1,86 @@
+.mrb {
+    margin-bottom: 30px;
+}
+.topic-item {
+    display: flex;
+    
+    color: #120f2d;
+    border-radius: 20px;
+    box-shadow: 10px 8px 16px 0px rgb(146 184 255 / 20%);
+    transition: all 0.3s ease-in-out;
+}
+.topic-item:hover{
+    transform: scale(1.015);
+}
+
+.topic-img > img {
+    width: 250px;
+    border-radius: 20px;
+}
+.contai-topic-info {
+    padding: 10px 25px;
+}
+.contai-topic-info > .topic-date {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.contai-topic-info > .topic-name {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 28px;
+    text-transform: capitalize;
+}
+.contai-topic-info > .topic-name:hover{
+color: #f14d5d;
+}
+
+.contai-topic-info > .topic-social {
+}
+
+.topic-social-icon {
+    margin-left: 30px;
+}
+
+.contai-topic-info > .topic-descrip {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.contai-topic-info > .topic-action {
+    display: flex;
+}
+
+.action-topic {
+}
+.btn-action {
+    text-transform: capitalize;
+}
+
+.action_detail {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f14d5d;
+    padding: 8px 16px;
+    margin-right: 80px;
+    transition: all 0.5s ease;
+}
+.action_detail:hover {
+    background-color: #2878eb;
+}
+
+.action_do {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f14d5d;
+    padding: 8px 16px;
+}
+.action_do:hover {
+    background-color: #2878eb;
+}

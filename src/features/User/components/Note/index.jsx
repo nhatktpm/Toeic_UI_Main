@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ExerciseUser(props) {
+function Note(props) {
     return (
         <div>
-            
+            note
         </div>
     );
 }
 
-export default ExerciseUser;
+export default Note;

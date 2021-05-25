@@ -1,0 +1,36 @@
+.intro-r {
+    display: flex;
+    align-items: center;  
+    
+    padding: 5px 20px;
+    /* border-right: #120f2d 2px solid; */
+
+}
+
+.intro-icon {
+    font-size: 45px;
+    color: black;
+}
+.intro-icon:hover {
+    color: brown;
+}
+.intro-content-text {
+    margin: 15px;
+}
+.intro-content-text > .intro-text {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #120f2d;
+
+    text-transform: capitalize;
+}
+.intro-content-text > .intro-info {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #120f2d;
+
+    margin: 5px 0;
+    max-width: 230px;
+}

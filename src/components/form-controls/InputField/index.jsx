@@ -12,7 +12,7 @@ InputField.propTypes = {
 };
 
 function InputField(props) {
-  const { form, name, label, disable, row } = props;
+  const { form, name, label, disable } = props;
   const { control } = form;
 
 

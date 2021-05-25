@@ -1,0 +1,86 @@
+.mrb {
+    margin-bottom: 30px;
+}
+.part-item {
+    display: flex;
+    
+    color: #120f2d;
+    border-radius: 20px;
+    box-shadow: 10px 8px 16px 0px rgb(146 184 255 / 20%);
+    transition: all 0.3s ease-in-out;
+}
+.part-item:hover{
+    transform: scale(1.015);
+}
+
+.part-img > img {
+    width: 250px;
+    border-radius: 20px;
+}
+.contai-part-info {
+    padding: 10px 25px;
+}
+.contai-part-info > .part-date {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.contai-part-info > .part-name {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 28px;
+    text-transform: capitalize;
+}
+.contai-part-info > .part-name:hover{
+color: #f14d5d;
+}
+
+.contai-part-info > .part-social {
+}
+
+.part-social-icon {
+    margin-left: 30px;
+}
+
+.contai-part-info > .part-descrip {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.contai-part-info > .part-action {
+    display: flex;
+}
+
+.action-part {
+}
+.btn-action {
+    text-transform: capitalize;
+}
+
+.action_detail {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f14d5d;
+    padding: 8px 16px;
+    margin-right: 80px;
+    transition: all 0.5s ease;
+}
+.action_detail:hover {
+    background-color: #2878eb;
+}
+
+.action_do {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f14d5d;
+    padding: 8px 16px;
+}
+.action_do:hover {
+    background-color: #2878eb;
+}

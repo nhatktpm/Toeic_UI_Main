@@ -1,16 +1,17 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 
-function ListTopicUser(props) {
+function Solution(props) {
 
+    const { idTopic } = props
     const match = useRouteMatch();
-    console.log(match);
 
+    console.log(match);
     return (
         <div>
-            topic user
+            {idTopic}
         </div>
     );
 }
 
-export default ListTopicUser;
+export default Solution;

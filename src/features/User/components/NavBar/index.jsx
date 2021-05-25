@@ -28,14 +28,15 @@ function NavBar(props) {
                     <Grid container alignItems="center">
                         <Grid item lg={3}>
                             <Box className='nav-logo'>
+                           <Link to='/'> 
                                 <img src="https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/02/logo.png" alt='' />
-                            </Box>
+                                </Link></Box>
                         </Grid>
                         <Grid item lg={7} >
                             <Box className='contai-link'>
 
                                 <Box>
-                                    <Link className={classes.link}>
+                                    <Link to="/list-part" className={classes.link}>
                                         <Box className='nav-link'>                                            
                                             <span className='link-text'>Toeic</span>
                                         </Box>
