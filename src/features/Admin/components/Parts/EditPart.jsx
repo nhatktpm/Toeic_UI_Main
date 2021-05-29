@@ -22,6 +22,7 @@ function EditPart(props) {
       id: idPart,
       part: values
     }
+    console.log(values);
     const action = editPart(data);
     const resultAction = await dispath(action);
 

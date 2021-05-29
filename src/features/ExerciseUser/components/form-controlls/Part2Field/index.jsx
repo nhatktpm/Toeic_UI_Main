@@ -12,7 +12,7 @@ import { Box, Container, Grid, makeStyles } from '@material-ui/core';
 
 import './index.css'
 
-Part1Field.propTypes = {
+Part2Field.propTypes = {
   form: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 
@@ -20,10 +20,10 @@ Part1Field.propTypes = {
   disable: PropTypes.bool,
 };
 
-function Part1Field(props) {
+function Part2Field(props) {
 
-  const { form, name, label, cauhoi, color } = props;
-console.log(color);
+  const { form, name, label, cauhoi } = props;
+
   const useStyles = makeStyles((theme) => ({
     root: {
     },
@@ -34,12 +34,11 @@ console.log(color);
   }));
   const classes = useStyles()
 
-  
-
   return (
     <Box>
       <Container>
         <Box>
+
           <FormControl component="fieldset" className={classes.w100} >
             {/* <FormLabel component="legend">{cauhoi.namecauhoi}</FormLabel> */}
             <Controller
@@ -48,7 +47,6 @@ console.log(color);
               render={(
                 { field: { onChange, onBlur, value, name }, fieldState: { invalid, error } }
               ) => (
-               
                 <RadioGroup
                   name={name}
                   value={value}
@@ -57,16 +55,9 @@ console.log(color);
                   <Box>
                     <Container>
                       <Box mt="30px">
-                        <Box className='ques-stt' component='span'>{cauhoi._id}</Box>
-                      </Box>
-
-                      <Box className='ques-content'>
-                        <Box className='question-img'>
-                          <img src={`${cauhoi.img}`} alt='Tua de cau hoi' />
-                        </Box>
-                      </Box>
+                        <Box className='ques-stt' component='span'> Cau 1</Box>
+                      </Box>                   
                       <Box>
-                      
                         <Grid container
                           direction="row"
                           justify="space-evenly"
@@ -111,4 +102,4 @@ console.log(color);
   );
 }
 
-export default Part1Field;
+export default Part2Field;

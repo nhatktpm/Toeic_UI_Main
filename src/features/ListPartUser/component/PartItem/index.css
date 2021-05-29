@@ -15,6 +15,7 @@
 
 .part-img > img {
     width: 250px;
+    height: 210px;
     border-radius: 20px;
 }
 .contai-part-info {

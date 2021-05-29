@@ -1,10 +1,11 @@
 
 import { Box, Container, Grid } from '@material-ui/core';
 import { computeHeadingLevel } from '@testing-library/dom';
+import listTopicAPI from 'api/listTopicAPI';
 import PartUser from 'features/ListPartUser/pages/PartUser';
 import TopicItem from 'features/ListTopicUser/component/TopicItem';
 import NavBar from 'features/User/components/NavBar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import './index.css';
@@ -18,9 +19,29 @@ function Topic_1_User(props) {
     // const partState = useSelector(state => state.part.listPart)
 
     const match = useRouteMatch();
-
-    var listTopicUser = [1, 2, 3, 4, 5]
+    let idTopic = match.url.split('/')[2]
   
+
+
+
+    const [loading, setLoading] = useState(true);
+    const [listTopic, setListTopic] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await listTopicAPI.getAll(idTopic)
+                setListTopic(data.data.topics);
+                
+            } catch (error) {
+                console.log('Failed to fetch product list: ', error);
+            }
+            setLoading(false);
+        })();
+    }, []);
+
+  
+
     return (
         <Box className='asd'>
             <Box className='bg-title-topic'>
@@ -48,9 +69,10 @@ function Topic_1_User(props) {
                             </Grid>
                             <Grid item lg={10}>
                                 <Box className='contai-list'>
-                                    {listTopicUser.map((topic) => {
-                                        return <TopicItem />
-                                    })}
+
+                                    {listTopic.map((topic) => (
+                                        <TopicItem topic={topic} />
+                                    ))}
                                 </Box>
                             </Grid>
                         </Grid>

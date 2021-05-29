@@ -1,4 +1,5 @@
 import { Box, Container, Grid, makeStyles } from '@material-ui/core';
+import ScrollToTop from 'components/SrollToTop';
 import Banner from 'features/User/components/Banner';
 import ListTenCard from 'features/User/components/ListTenCard';
 import NavBar from 'features/User/components/NavBar';
@@ -21,21 +22,21 @@ function Home(props) {
             textDecoration: 'none',
             color: '#120F2D'
         },
-        hh : {
-             height: '500px'
+        hh: {
+            height: '500px'
         }
     }));
     const classes = useStyles()
-  
+
 
 
 
     return (
-        <Box className='home'>    
+        <Box className='home'>
 
-       
+            <ScrollToTop />
             <Box >
-            
+
                 <NavBar> </NavBar>
             </Box>
 

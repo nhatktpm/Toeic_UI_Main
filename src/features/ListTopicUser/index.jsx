@@ -27,10 +27,10 @@ function ListTopicUser(props) {
 
     const partState = useSelector(state => state.part.listPart)
 
-    console.log(partState);
+
 
     const match = useRouteMatch();
-
+    
 
 
     return (

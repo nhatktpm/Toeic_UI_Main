@@ -28,11 +28,11 @@ function ListPartUser(props) {
     const dispath = useDispatch()
     useEffect(() => {
         dispath(getListPart())
-    });
+    },[]);
 
     const partState = useSelector(state => state.part.listPart)
 
-    console.log(partState);
+    // console.log(partState);
 
     const match = useRouteMatch();
 

@@ -43,7 +43,8 @@ const DashBoard = props => {
 
         },
         content: {
-            height: '90vh'
+            height: 'auto',
+            minHeight : '90vh'
         },
         bg: {
             backgroundColor: '#eeeeee'

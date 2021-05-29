@@ -52,29 +52,29 @@ function Question1(props) {
   return (
 
     <Box className='content-list'>
-    <Grid container>
-      <Grid item lg={12}>
-        <Box className='ad-table'>
+      <Grid container>
+        <Grid item lg={12}>
+          <Box className='ad-table'>
 
-          <Box className='table-title'>
-            <Box className='content-title'>
-              <AcUnitIcon className='table-icon' />
-              <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+            <Box className='table-title'>
+              <Box className='content-title'>
+                <AcUnitIcon className='table-icon' />
+                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box className='button-add'>
-            <Button
-              variant="contained"
-              color="secondary"
-              // className={classes.button}
-              startIcon={<AddCircleIcon />}
-              onClick={() => handleAddQuestion(idTopic)}
-            >
-              Add Topic
+            <Box className='button-add'>
+              <Button
+                variant="contained"
+                color="secondary"
+                // className={classes.button}
+                startIcon={<AddCircleIcon />}
+                onClick={() => handleAddQuestion(idTopic)}
+              >
+                Add Topic
           </Button>
-          </Box>
-          <Box className='table-body'>
-          <table class="content-table">
+            </Box>
+            <Box className='table-body'>
+              <table class="content-table">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -90,8 +90,8 @@ function Question1(props) {
 
                     <tr key={question._id}>
                       <td>{i++}</td>
-                      <td>{question.nameTopic}</td>
-                      <td> {question.img}</td>
+                      <td> <Box > <img className="img-in-table" src={`${question.img}`} alt='IMG Question' /> </Box>  </td>
+                      <td>{question.nameTopic} </td>
                       <td>{question.descripTopic}</td>
                       <td>
                         <Button onClick={() => handleEditQuestion(question._id)}>Edit</Button>
@@ -103,12 +103,12 @@ function Question1(props) {
 
                 </tbody>
               </table>
+            </Box>
           </Box>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
-  
+    </Box>
+
   );
 }
 

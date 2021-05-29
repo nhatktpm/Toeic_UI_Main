@@ -1,11 +1,24 @@
 import { Box, Container, Grid, makeStyles } from '@material-ui/core';
+import AllComment from 'features/ExerciseUser/components/AllComment';
+import ExerMenu from 'features/ExerciseUser/components/ExerMenu';
 import ExerPart1 from 'features/ExerciseUser/components/ExerPart1';
-import NavBar from 'features/User/components/NavBar';
-import Note from 'features/User/components/Note';
+import ExerPart2 from 'features/ExerciseUser/components/ExerPart2';
+import Note from 'features/ExerciseUser/components/Note';
+import Solution from 'features/ExerciseUser/components/Solution';
 
-import Solution from 'features/User/components/Solution';
-import React from 'react';
+import TopIntroL from 'features/ExerciseUser/components/TopIntroL';
+import NavBar from 'features/User/components/NavBar';
+
+
+import React, { useEffect, useState } from 'react';
+
 import { Route, Switch, useRouteMatch } from 'react-router';
+import QuestionApi from 'api/listQuestionApi';
+import './index.css'
+import listTopicAPI from 'api/listTopicAPI';
+import { useDispatch } from 'react-redux';
+import { getListExer, getTopicExer } from 'features/ExerciseUser/ExerciseSlice';
+
 
 function DetailExercise(props) {
 
@@ -14,96 +27,121 @@ function DetailExercise(props) {
         },
         layout: {
             paddingTop: '100px'
+
+        },
+        bgForm: {
+            backgroundColor: '#f0f4fa'
+        },
+        contaiBot: {
+            minHeight: '400px',
+            boxShadow: '0px 10px 50px 0px rgb(44 44 52 / 8%)',
+
         }
     }));
     const classes = useStyles()
+    const match = useRouteMatch()
+    const {
+        params: { idTopic, slug },
+        url,
+    } = useRouteMatch();
 
-    const match = useRouteMatch();
 
-    var listQuestion = [
-        {
-            nameQuestion: 'cau1',
-            slug: 'topic1',
-            descrip: ' mo to 1',
-            id: '1'
-        }, {
-            nameQuestion: 'cau1',
-            slug: 'topic1',
-            descrip: ' mo to 1',
-            id: '2'
-        }, {
-            nameQuestion: 'cau1',
-            slug: 'topic1',
-            descrip: ' mo to 1',
-            id: '3'
-        }
-    ]
+    const [listExer, SetListExer] = useState([]);
+    const [toPic, SetTopic] = useState([]);
+    const [loading, setLoading] = useState(true);
+   
 
+    const dispath = useDispatch()
+
+    useEffect(() => {
+        (async () => {            
+            const resultAction = await dispath(getListExer(idTopic))
+            const resultAction2 = await dispath(getTopicExer(idTopic))
+        })()
+    }, []);
+     
+    
 
     const exerciseOfPart = (slug) => {
+
         switch (slug) {
-            case 'part-1':
-                return <ExerPart1 listQuestion={listQuestion} />;
-            case 'part-2':
-                return 'bar';
+            case 'topic-1':
+                return <ExerPart1 listQuestion={listExer} />;
+            case 'topic-2':
+                return <ExerPart2 listQuestion={listExer} />;
             default:
                 return 'foo';
         }
     }
 
-    var x = 'part-1'
-
+   
 
     return (
         <div>
-            <Box>
+            <Box className="nav-top-exer">
                 <NavBar />
             </Box>
-            
-            <Box className={classes.layout}>
-                <Box className="contai-list-question">
-                    <Container maxWidth="lg">
-                        <Grid container>
-                            <Grid item lg={12}> gioi thieu</Grid>
-                        </Grid>
-                    </Container>
-                </Box>
 
-                {/*  Danh sach cac cau hoi */}
+            <Box className={classes.layout}>
 
                 <Box>
-                    {() => exerciseOfPart(x)}
+                    <TopIntroL />
                 </Box>
-
-
+                {/*  Danh sach cac cau hoi */}
+                <Box>
+                    <Container>
+                        <Box>
+                            {() => exerciseOfPart(slug)}
+                        </Box>
+                    </Container>
+                </Box>
 
                 {/* Cac CMT, bai giai, ghi chu */}
 
                 <Box>
                     <Container>
                         <Grid container>
-                            <Grid item xl={12} lg={12} md={12}>
+                            <Grid item xl={9} lg={9} md={9}>
                                 <Box>
-                                    <Box> linl</Box>
-                                    <Box> linl</Box>
+                                    <ExerMenu />
                                 </Box>
                             </Grid>
                         </Grid>
                     </Container>
                 </Box>
 
-                <Box>
-                    <Switch>
+                <Box >
+                    <Container >
+                        <Grid container>
+                            <Grid item lg={9} md={9} xs={12} className={classes.contaiBot}>
+                                <Switch>
 
-                        <Route path={`${match.url}`} exact >
-                            <Solution idTopic={126543} />
-                        </Route>
+                                    <Route path={`${match.url}`} exact >
+                                        <AllComment />
+                                    </Route>
 
-                        <Route path={`${match.url}/note`}>
-                            <Note />
-                        </Route>
+                                    <Route path={`${match.url}/note`}>
+                                        <Note />
+                                    </Route>
 
-                    </Switch>
+                                    <Route path={`${match.url}/solution`}>
+                                        <Solution idTopic={126543} />
+                                    </Route>
+
+                                    <Route path={`${match.url}/note`}>
+                                        <Note />
+                                    </Route>
+
+                                </Switch>
+                            </Grid>
+                            <Grid item lg={3} md={3} xs={12}>
+
+                                quan cao
+                            </Grid>
+                        </Grid>
+
+                    </Container>
+
                 </Box>
             </Box>
         </div>

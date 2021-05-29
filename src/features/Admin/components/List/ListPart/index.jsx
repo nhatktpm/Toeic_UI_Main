@@ -35,7 +35,7 @@ function Part(props) {
   useEffect(() => {
     handleClick()
   }, []);
-  let i = 0;
+  let i = 1;
 
 
   const useStyles = makeStyles((theme) => ({
@@ -48,6 +48,9 @@ function Part(props) {
       fontSize: '1.5rem',
       fontWeight: '400',
       background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+
+    },
+    heght: {
 
     }
 
@@ -94,9 +97,11 @@ function Part(props) {
 
                     <tr key={part._id}>
                       <td>{i++}</td>
-                      <td>{part.name}</td>
-                      <td> {part.img}</td>
-                      <td>{part.slug}</td>
+                      <td> <Box > <img className="img-in-table" src={`${part.img}`} alt='' />  </Box> </td>
+                      <td> {part.name}</td>
+                      <td width='350px'>
+                      <Box className="text-n-row"> {part.descrip}</Box>
+                      </td>
                       <td>
                         <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
                         <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>

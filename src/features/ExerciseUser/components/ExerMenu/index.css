@@ -1,0 +1,17 @@
+.menu-exer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style-type: none;
+
+    background-color: #f8f9f8;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-exer-item {
+    margin: 0 40px;
+    color: aqua;
+}

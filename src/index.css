@@ -1,11 +1,50 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.text-s {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #120f2d;
+}
+
+.text-m {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  text-transform: capitalize;
+  color: #120f2d;
+}
+
+.text-m:hover {
+  color: #f14d5d;
+}
+
+.text-l {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 28px;
+  text-transform: capitalize;
+  color: #120f2d;
+}
+
+.text-l:hover {
+  color: #f14d5d;
+}
+
+.btn-bg-red {
+  background-color: #f14d5d;
+  transition: all 0.5s ease-in-out;
+}
+.btn-bg-red:hover {
+  background-color: #221638;
+}
 
 /**
 .btn {

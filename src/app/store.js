@@ -3,6 +3,7 @@ import partReducer from '../features/Admin/Slice/PartSlice';
 import topicReducer from '../features/Admin/Slice/TopicSlice';
 import questionReducer from '../features/Admin/Slice/QuestionSlice';
 import trashReducer from '../features/Admin/Slice/TrashSlice';
+import exerReducer from '../features/ExerciseUser/ExerciseSlice';
 
 const { configureStore } = require('@reduxjs/toolkit');
 
@@ -11,7 +12,9 @@ const rootReducer = {
   part: partReducer,
   topic : topicReducer,
   question: questionReducer,
-  trash: trashReducer
+  trash: trashReducer,
+  exer : exerReducer
+
   
 };
 

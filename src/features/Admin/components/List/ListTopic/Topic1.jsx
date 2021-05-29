@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { deleteSoftTopic1, getListTopic } from 'features/Admin/Slice/TopicSlice';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router';
 
@@ -11,8 +11,13 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useSnackbar } from 'notistack';
 
 import Swal from 'sweetalert2'
+import ReactPaginate from 'react-paginate';
+
+import './index.css'
 
 function Topic1(props) {
+
+
 
   const {
     params: { idPart },
@@ -71,10 +76,42 @@ function Topic1(props) {
     history.push(`/admin/question-1/${idTopic}`)
   }
 
+  // Phan trang 
+
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const usersPerPage = 5;
+  const pagesVisited = pageNumber * usersPerPage;
+  let i = 0;
+  const displayUsers = topicState
+    .slice(pagesVisited, pagesVisited + usersPerPage)
+    .map((topic) => {
+      return (
+
+        <tr key={topic._id}>
+          <td>{i++}</td>
+          <td><Box > <img className="img-in-table" src={`${topic.img}`} alt='IMG Topic' />  </Box></td>
+          <td> {topic.img}</td>
+          <td>{topic.descripTopic}</td>
+          <td>
+            <Button onClick={() => handleEditTopic(topic._id)}>Edit</Button>
+            <Button onClick={() => handlDeleteTopic(topic._id)}>Delete</Button>
+            <Button onClick={() => handleGetListQuestion(topic._id)}>List Question</Button>
+          </td>
+        </tr>
+      );
+    });
+
+  const pageCount = Math.ceil(topicState.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   useEffect(() => {
     handleClick()
   }, []);
-  let i = 0;
+
   return (
     <Box className='content-list'>
       <Grid container>
@@ -110,8 +147,8 @@ function Topic1(props) {
                   </tr>
                 </thead>
                 <tbody>
-
-                  {topicState.map((topic) => (
+                  {displayUsers}
+                  {/* {topicState.map((topic) => (
 
                     <tr key={topic._id}>
                       <td>{i++}</td>
@@ -124,10 +161,23 @@ function Topic1(props) {
                         <Button onClick={() => handleGetListQuestion(topic._id)}>List Question</Button>
                       </td>
                     </tr>
-                  ))}
+                  ))} */}
 
                 </tbody>
               </table>
+              <Box>
+                <ReactPaginate
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  pageCount={pageCount}
+                  onPageChange={changePage}
+                  containerClassName={"paginationBttns"}
+                  previousLinkClassName={"previousBttn"}
+                  nextLinkClassName={"nextBttn"}
+                  disabledClassName={"paginationDisabled"}
+                  activeClassName={"paginationActive"}
+                />
+              </Box>
             </Box>
           </Box>
         </Grid>

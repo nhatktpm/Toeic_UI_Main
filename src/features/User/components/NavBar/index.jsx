@@ -2,12 +2,16 @@ import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/c
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../NavBar/index.css';
+import { animateScroll as scroll } from 'react-scroll'
+
 
 NavBar.propTypes = {
 
 };
 
 function NavBar(props) {
+
+
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -28,8 +32,8 @@ function NavBar(props) {
                     <Grid container alignItems="center">
                         <Grid item lg={3}>
                             <Box className='nav-logo'>
-                           <Link to='/'> 
-                                <img src="https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/02/logo.png" alt='' />
+                                <Link to='/'>
+                                    <img src="https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/02/logo.png" alt='' />
                                 </Link></Box>
                         </Grid>
                         <Grid item lg={7} >
@@ -37,36 +41,36 @@ function NavBar(props) {
 
                                 <Box>
                                     <Link to="/list-part" className={classes.link}>
-                                        <Box className='nav-link'>                                            
+                                        <Box className='nav-link'>
                                             <span className='link-text'>Toeic</span>
                                         </Box>
                                     </Link>
                                 </Box>
 
                                 <Box>
-                                    <Box className='nav-link'>
-                                        <span className='link-text'>toeic listening</span>
-                                     
+                                    <Box className='nav-link' onClick={() => scroll.scrollToTop()}>
+                                        <span className='link-text' >toeic listening</span>
+
                                     </Box>
                                 </Box>
 
                                 <Box>
                                     <Box className='nav-link'>
-                                        
+
                                         <span className='link-text'>Toeic reading</span>
                                     </Box>
                                 </Box>
 
                                 <Box>
                                     <Box className='nav-link'>
-                                    
+
                                         <span className='link-text'>Contact us</span>
                                     </Box>
                                 </Box>
 
                                 <Box>
                                     <Box className='nav-link'>
-                                      
+
                                         <span className='link-text'>about</span>
                                     </Box>
                                 </Box>

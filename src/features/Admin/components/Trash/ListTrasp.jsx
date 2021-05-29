@@ -102,9 +102,9 @@ function ListTrash(props) {
 
                     <tr key={topic._id}>
                       <td>{i++}</td>
-                      <td>{topic.nameTopic}</td>
-                      <td> {topic.img}</td>
-                      <td>{topic.descripTopic}</td>
+                      <td><Box > <img className="img-in-table" src={`${topic.img}`} alt='IMG Topic' />  </Box></td>
+                      <td> {topic.nameTopic}</td>
+                      <td>  <Box className="text-n-row">{topic.descripTopic}</Box></td>
                       <td>
                         <Button onClick={() => handleRestoreTopic(topic._id)}>Restore</Button>
                         <Button onClick={() => handlDeleteTopic(topic._id)}>Delete</Button>

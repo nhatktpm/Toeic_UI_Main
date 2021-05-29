@@ -7,9 +7,13 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 import './index.css'
 
+PartItem.propTypes = {
+    part: PartItem.object,
+};
+
 function PartItem(props) {
 
-
+    const { part } = props
     const useStyles = makeStyles((theme) => ({
         root: {
         },
@@ -28,35 +32,32 @@ function PartItem(props) {
         <div>
             <Box className='part-item mrb'>
                 <Box className='part-img'>
-                    <img src='https://themes.envytheme.com/ecademy/wp-content/uploads/2020/05/course-img1-400x400.jpg' alt='' />
+                    <img src={`${part.img}`} alt='' />
                 </Box>
                 <Box>
                     <Box className='contai-part-info'>
                         <Box mb={2} ml={3} className='part-date'> ngay 1 thang 1</Box>
-                        <Box mb={1} className='part-name'> day la tem cua part</Box>
+                        <Box mb={1} className='part-name'> {part.name}</Box>
                         <Box mb={2} className='part-social'>
                             <Box >
-                            
-                                <ShareIcon className='part-social-icon' fontSize="small"/>
+
+                                <ShareIcon className='part-social-icon' fontSize="small" />
                                 <FacebookIcon className='part-social-icon' fontSize="small" />
                                 <InstagramIcon className='part-social-icon' fontSize="small" />
                             </Box>
 
                         </Box>
                         <Box mb={3} className='part-descrip'>
-                            There’s a quandary I hear people talk about a
-                            lot in the self-improvement world whould I just learn…
-                            oot in the self-improvement world whould I just lear
-                            ot in the self-improvement world whould I just lear
+                            {part.descrip}
                         </Box>
                         <Box className='part-action'>
-                            <Link className={classes.link} to='/list-topic/132'>
-                                <Box  className='btn-action action_detail'  > chi tiet </Box>
+                            <Link className={classes.link} to={`/list-topic/${part._id}`}>
+                                <Box className='btn-action action_detail'  > chi tiet </Box>
                             </Link>
 
-                            <Link className={classes.link} to='/exercise/asd/asd'>
+                            {/* <Link className={classes.link} to='/exercise/asd/asd'>
                                 <Box className='btn-action action_do' > lam bai</Box>
-                            </Link>
+                            </Link> */}
                         </Box>
                     </Box>
                 </Box>

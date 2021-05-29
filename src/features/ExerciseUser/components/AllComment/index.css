@@ -1,0 +1,9 @@
+.layout-all-comment {
+    margin:20px 0px 0px 20px;
+}
+.contai-all-comment {
+    display: flex;
+}
+.comment-field{
+    width: 80%;
+}

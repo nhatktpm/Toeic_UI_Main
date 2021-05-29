@@ -6,9 +6,18 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import { Box, makeStyles } from '@material-ui/core';
 import './index.css'
 
+
+TopicItem.propTypes = {
+    topic: TopicItem.object,
+};
+
 function TopicItem(props) {
 
-    
+
+
+    const { topic } = props
+
+
     const useStyles = makeStyles((theme) => ({
         root: {
         },
@@ -32,28 +41,25 @@ function TopicItem(props) {
                 <Box>
                     <Box className='contai-topic-info'>
                         <Box mb={2} ml={3} className='topic-date'> ngay 1 thang 1</Box>
-                        <Box mb={1} className='topic-name'> day la tem cua topic</Box>
+                        <Box mb={1} className='topic-name'>{topic.nameTopic}</Box>
                         <Box mb={2} className='topic-social'>
                             <Box >
-                            
-                                <ShareIcon className='topic-social-icon' fontSize="small"/>
+
+                                <ShareIcon className='topic-social-icon' fontSize="small" />
                                 <FacebookIcon className='topic-social-icon' fontSize="small" />
                                 <InstagramIcon className='topic-social-icon' fontSize="small" />
                             </Box>
 
                         </Box>
                         <Box mb={3} className='topic-descrip'>
-                            There’s a quandary I hear people talk about a
-                            lot in the self-improvement world whould I just learn…
-                            oot in the self-improvement world whould I just lear
-                            ot in the self-improvement world whould I just lear
+                            {topic.descrip}
                         </Box>
                         <Box className='topic-action'>
                             <Link className={classes.link} to='/list-topic/132/detail'>
-                                <Box  className='btn-action action_detail'  > chi tiet </Box>
+                                <Box className='btn-action action_detail'  > chi tiet </Box>
                             </Link>
 
-                            <Link className={classes.link} to='/exercise/asd/asd'>
+                            <Link className={classes.link} to={`/exercise/${topic._id}/${topic.slug}`}>
                                 <Box className='btn-action action_do' > lam bai</Box>
                             </Link>
                         </Box>

@@ -34,9 +34,7 @@ function AddQuestion1(props) {
         params: { idTopic },
         url,
     } = useRouteMatch();
-
-   
-
+ 
     return (
         <div>
             <QuestionForm1  onSubmit={handleAddTopicFormSubmit} />
