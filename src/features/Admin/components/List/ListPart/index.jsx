@@ -29,7 +29,7 @@ function Part(props) {
     history.push(`/admin/parts/${idPart}/edit`);
   }
   const handleGetListTopic = (idPart, slug) => {
-    history.push(`/admin/${slug}/${idPart}`)
+    history.push(`/admin/topic-1/${idPart}`)
   }
 
   useEffect(() => {
@@ -104,7 +104,7 @@ function Part(props) {
                       </td>
                       <td>
                         <Button onClick={() => handleEditPart(part._id)}>Edit</Button>
-                        <Button onClick={() => handleGetListTopic(part._id, part.slug)}>List Topic</Button>
+                        <Button onClick={() => handleGetListTopic(part._id)}>List Topic</Button>
                       </td>
                     </tr>
                   ))}

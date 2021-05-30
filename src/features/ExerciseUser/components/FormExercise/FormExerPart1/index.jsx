@@ -66,8 +66,8 @@ function ExerPart1Form(props) {
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((cauhoi) => {
             return (
-               
-                <Part1Field  color={false ? 'primary' : 'default'} key={cauhoi.id} name={cauhoi._id} cauhoi={cauhoi} form={form} />
+                               
+                <Part1Field  color={cauhoi.kq} key={cauhoi.id} name={cauhoi._id} cauhoi={cauhoi} form={form} />
             );
         });
 

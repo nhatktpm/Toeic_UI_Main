@@ -4,6 +4,9 @@ import CardPart from '../CardPart';
 import './index.css';
 
 function ListTenCard(props) {
+    const { listpart } = props
+    
+
 
     return (
         <Box className='bg-listen-card'>
@@ -11,10 +14,10 @@ function ListTenCard(props) {
             <Container maxWidth="lg">
                 <Box className='title-list-card'>
                     <Box className='text-title-card title-red'>
-                        toeic
+                        Toeic
                     </Box>
                     <Box className='text-title-card title-black'>
-                        listening toeic test
+                        Listening Toeic Test
                     </Box>
                 </Box>
                 <Box className='list-l-card'>
@@ -23,15 +26,12 @@ function ListTenCard(props) {
                         justify="center"
                         alignItems="center"
                     >
-                        <Grid item lg={4}>
-                            <CardPart />
-                        </Grid>
-                        <Grid item lg={4}>
-                            <CardPart />
-                        </Grid>
-                        <Grid item lg={4}>
-                            <CardPart />
-                        </Grid>
+                        {listpart.map((part) => {
+                            return (<Grid item lg={4}>
+                                <CardPart  part={part} />
+                            </Grid>)
+                        })}
+
                     </Grid>
                 </Box>
             </Container>

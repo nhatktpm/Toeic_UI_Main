@@ -1,9 +1,10 @@
 import { Box, Container, Grid, makeStyles } from '@material-ui/core';
-import ScrollToTop from 'components/SrollToTop';
+import listPartApi from 'api/listPartApi';
+import PartItem from 'features/ListPartUser/component/PartItem';
 import Banner from 'features/User/components/Banner';
 import ListTenCard from 'features/User/components/ListTenCard';
 import NavBar from 'features/User/components/NavBar';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Home/index.css';
 
 Home.propTypes = {
@@ -28,13 +29,29 @@ function Home(props) {
     }));
     const classes = useStyles()
 
+    const [loading, setLoading] = useState(true);
+    const [PartListten, setPartlistten] = useState([]);
+    const [PartRead, setPartRead] = useState([]);
 
+    
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await listPartApi.getAll()
+                setPartlistten(data.data.parts.slice(0,4));
+                setPartRead(data.data.parts.slice(4,7));
+            } catch (error) {
+                console.log('Failed to fetch product list: ', error);
+            }
+            setLoading(false);
+        })();
+    }, []);
 
 
     return (
         <Box className='home'>
 
-            <ScrollToTop />
+         
             <Box >
 
                 <NavBar> </NavBar>
@@ -45,22 +62,26 @@ function Home(props) {
             </Box>
 
             <Box>
-                <ListTenCard />
+                <ListTenCard listpart={PartRead} />
             </Box>
 
             <Box>
                 <Container>
                     <Box className={classes.hh}>
                         <Grid container>
-                            <Grid item lg={6}>
+                            <Grid item lg={2}>
                                 banner left
 
-                                <p>If you click on me, I will disappear.</p>
-                                <p>Click me away!</p>
-                                <p>Click me too!</p>
+                                
                             </Grid>
-                            <Grid item lg={6}>
-                                banner right
+                            <Grid item lg={10}>
+                            <Box>
+
+                                <Box className='text-title-readi'>Reading Toeic Test</Box>
+                            { PartListten.map((part)=>{
+                              return  <PartItem part ={part}/>
+                            })}
+                               </Box>                            
                             </Grid>
                         </Grid>
                     </Box>

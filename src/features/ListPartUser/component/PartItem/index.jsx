@@ -40,14 +40,13 @@ function PartItem(props) {
                         <Box mb={1} className='part-name'> {part.name}</Box>
                         <Box mb={2} className='part-social'>
                             <Box >
-
                                 <ShareIcon className='part-social-icon' fontSize="small" />
                                 <FacebookIcon className='part-social-icon' fontSize="small" />
                                 <InstagramIcon className='part-social-icon' fontSize="small" />
                             </Box>
 
                         </Box>
-                        <Box mb={3} className='part-descrip'>
+                        <Box mb={3} className='part-descrip text-n-row'>
                             {part.descrip}
                         </Box>
                         <Box className='part-action'>

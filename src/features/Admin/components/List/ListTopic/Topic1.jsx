@@ -1,27 +1,23 @@
-import { Box, Button, Container, Grid, Typography } from '@material-ui/core';
-import { unwrapResult } from '@reduxjs/toolkit';
-import { deleteSoftTopic1, getListTopic } from 'features/Admin/Slice/TopicSlice';
-
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useRouteMatch } from 'react-router';
-
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { deleteSoftTopic1, getListTopic } from 'features/Admin/Slice/TopicSlice';
 import { useSnackbar } from 'notistack';
-
-import Swal from 'sweetalert2'
+import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router';
+import Swal from 'sweetalert2';
+import './index.css';
 
-import './index.css'
+
+
+
 
 function Topic1(props) {
 
-
-
   const {
-    params: { idPart },
-    url,
+    params: { idPart }
   } = useRouteMatch();
 
   const { enqueueSnackbar } = useSnackbar()
@@ -32,7 +28,7 @@ function Topic1(props) {
 
   const handleClick = async () => {
     const action = getListTopic(idPart)
-    const resultAction = await dispath(action)
+    await dispath(action)
 
   }
 
@@ -40,7 +36,11 @@ function Topic1(props) {
     history.push(`/admin/topic-1/${idPart}/edit`);
   }
 
+ 
+
   const handlDeleteTopic = async (idTopic) => {
+
+
 
     Swal.fire({
       title: 'Are you sure?',
@@ -58,7 +58,7 @@ function Topic1(props) {
           const resultAction = await dispath(action)
 
           let slipType = resultAction.type.split('/')
-          if (slipType[2] == 'fulfilled') {
+          if (slipType[2] === 'fulfilled') {
             enqueueSnackbar('Edit Part Successfully', { variant: 'success' })
           } else {
             enqueueSnackbar('Edit Part Not Successfully', { variant: 'error' })
@@ -91,7 +91,7 @@ function Topic1(props) {
         <tr key={topic._id}>
           <td>{i++}</td>
           <td><Box > <img className="img-in-table" src={`${topic.img}`} alt='IMG Topic' />  </Box></td>
-          <td> {topic.img}</td>
+          <td> {topic.nameTopic}</td>
           <td>{topic.descripTopic}</td>
           <td>
             <Button onClick={() => handleEditTopic(topic._id)}>Edit</Button>

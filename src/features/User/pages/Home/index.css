@@ -2,6 +2,19 @@
 Navbar CSS
 */
 
-
-
 /* Navbar CSS */
+
+.text-title-readi {
+    color: #120f2d;    
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 60px;
+    margin: 30px auto;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+
+.text-title-readi:hover {
+    color: #f14d5d;
+}

@@ -22,10 +22,22 @@
 }
 
 .card-content .name-card {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 28px;
     color: #120f2d;
+    transition: color 0.2s ease-in-out;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.card-content .name-card:hover {
+    
+    color: #f14d5d;
 }
 .card-content .card-decrip {
     font-size: 16px;
@@ -34,6 +46,13 @@
     color: #120f2d;
 
     margin: 15px 0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 .card-content .card-action {
     display: flex;

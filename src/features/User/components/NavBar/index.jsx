@@ -1,17 +1,15 @@
 import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { animateScroll as scroll } from 'react-scroll';
 import '../NavBar/index.css';
-import { animateScroll as scroll } from 'react-scroll'
 
-
+// onClick={() => scroll.scrollToTop()}    Scroll to top
 NavBar.propTypes = {
 
 };
 
 function NavBar(props) {
-
-
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -23,7 +21,6 @@ function NavBar(props) {
     }));
 
     const classes = useStyles();
-
 
     return (
         <Box className='nav'>
@@ -48,7 +45,7 @@ function NavBar(props) {
                                 </Box>
 
                                 <Box>
-                                    <Box className='nav-link' onClick={() => scroll.scrollToTop()}>
+                                    <Box className='nav-link' >
                                         <span className='link-text' >toeic listening</span>
 
                                     </Box>
@@ -94,6 +91,7 @@ function NavBar(props) {
                 </Box>
 
             </Container>
+
         </Box>
     );
 }

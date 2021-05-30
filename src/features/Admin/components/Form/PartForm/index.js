@@ -1,14 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import InputField from 'components/form-controls/InputField';
-
+import PasswordField from 'components/form-controls/PasswordField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
+
 
 PartForm.propTypes = {
   onSubmit: PropTypes.func,
@@ -85,6 +86,7 @@ function PartForm(props) {
                   <Grid item md={3}>
                     <Box className='inp'>
                       <InputField name="img" label="Upload File" form={form} />
+                      
                     </Box>
                   </Grid>
 

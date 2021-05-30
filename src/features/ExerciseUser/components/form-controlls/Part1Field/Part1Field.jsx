@@ -2,6 +2,8 @@ import Radio from '@material-ui/core/Radio';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import classnames from 'classnames'
+
 
 
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -22,8 +24,9 @@ Part1Field.propTypes = {
 
 function Part1Field(props) {
 
-  const { form, name, label, cauhoi, color } = props;
-console.log(color);
+  const { form, name, cauhoi, color } = props;
+  console.log(color);
+
   const useStyles = makeStyles((theme) => ({
     root: {
     },
@@ -34,21 +37,21 @@ console.log(color);
   }));
   const classes = useStyles()
 
-  
+
 
   return (
     <Box>
       <Container>
         <Box>
           <FormControl component="fieldset" className={classes.w100} >
-            {/* <FormLabel component="legend">{cauhoi.namecauhoi}</FormLabel> */}
+
             <Controller
               name={name}
               control={form.control}
               render={(
                 { field: { onChange, onBlur, value, name }, fieldState: { invalid, error } }
               ) => (
-               
+
                 <RadioGroup
                   name={name}
                   value={value}
@@ -66,21 +69,25 @@ console.log(color);
                         </Box>
                       </Box>
                       <Box>
-                      
+
                         <Grid container
                           direction="row"
                           justify="space-evenly"
                           alignItems="center">
 
                           <Grid item xl={3} md={3}>
-                            <Box className='part-1-choose'>
-                              <FormControlLabel value="a" control={<Radio />} label="cau a" />
+                            <Box className='part-1-choose'  >
+                              <FormControlLabel value="a"
+                                control={<Radio className={classnames({ dung: color })} />}
+                                label="cau a" />
                             </Box>
                           </Grid>
 
                           <Grid item xl={3} md={3}>
                             <Box className='part-1-choose'>
-                              <FormControlLabel value="b" control={<Radio />} label="cau b" />
+                              <FormControlLabel value="b" 
+                              control={<Radio className={classnames({ dung: color })} />} 
+                              label="cau b" />
                             </Box>
                           </Grid>
 

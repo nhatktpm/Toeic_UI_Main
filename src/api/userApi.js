@@ -10,8 +10,8 @@ const userApi = {
         const url = `/user/${id}`;
         return axiosClient.get(url); 
     },
-    add(data) {
-        const url = '/user';
+    login(data) {
+        const url = '/auth/login';
         return axiosClient.post(url, data);
     },
     update(data) {

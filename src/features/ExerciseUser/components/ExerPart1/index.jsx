@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router';
 import ExerPart1Form from '../FormExercise/FormExerPart1';
+import Swal from 'sweetalert2';
 
 function ExerPart1(props) {
 
@@ -22,16 +23,18 @@ function ExerPart1(props) {
 
     const listExerState = useSelector(state => state.exer.listExer);
     // var newExer = [...listExerState]
-console.log(listExerState);
-    
+    console.log(listExerState);
+
+    var isLoggin = true;
 
     const handleSubmit = async (values) => {
 
         let mark = 0;
+       
+
         let listAnswer = listExerState.map((answer) => {
             let newAnswer = { ...answer }
             if (answer.dapandung == values[answer._id]) {
-
                 newAnswer.kq = true;
                 mark++
             }
@@ -40,7 +43,6 @@ console.log(listExerState);
             };
             return newAnswer
         })
-
         let data = {
             dataAPI: {
                 point: mark,
@@ -50,8 +52,46 @@ console.log(listExerState);
             idTopic: idTopic
         }
         const action = getAnswer(data)
-        const resultAction = await dispatch(action)        
+        const resultAction = await dispatch(action)
+
+        if (!isLoggin) {
+            
+            Swal.fire({
+                title: 'Bạn Chưa Đăng Nhập',
+                text: "Đăng nhập để nhận kết quả",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Loggin'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // show form dang ky
+                }
+            })
+        }
+        
+        if(isLoggin){
+            Swal.fire({
+
+                title: `Bạn đạt được: ${mark} Điểm ` ,
+                text: "Nhấn OK Để Xem Đáp Án Của Bài Thi",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  
+                }
+              })
+        }
+
+        
     };
+
+
 
     return (
         <Box>
