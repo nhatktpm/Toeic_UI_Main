@@ -40,7 +40,8 @@ function PartUser(props) {
         <div>
 
             <Box className='bg-title-part'>
-                <Box className='title-part'> part title</Box>
+                <Box className='title-part'> List All Part In Toeic </Box>
+                
             </Box>
 
             <Box className={classes.mrBot}>

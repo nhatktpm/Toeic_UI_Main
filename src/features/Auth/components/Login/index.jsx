@@ -1,4 +1,5 @@
 import { unwrapResult } from '@reduxjs/toolkit';
+import userApi from 'api/userApi';
 import { login } from 'features/Auth/userSlice';
 
 import { useSnackbar } from 'notistack';
@@ -16,23 +17,31 @@ function Login(props) {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (values) => {
-    // try {
-    //   console.log(values);
-    //   const action = login(values);
-    //   const resultAction = await dispatch(action);
-    //   unwrapResult(resultAction);
+    try {
 
-    //   // close dialog
-    //   const { closeDialog } = props;
-    //   if (closeDialog) {
-    //     closeDialog();
-    //   }
-    // } catch (error) {
-    //   console.log('Failed to login:', error);
-    //   enqueueSnackbar(error.message, { variant: 'error' });
-    // }
+      const dataLogin = await userApi.login(values)
 
-    console.log(values);
+      if (dataLogin.data.token) {
+        console.log("true");
+      } else {
+        console.log("fals");
+      }
+
+
+      console.log(dataLogin);
+
+
+      // // close dialog
+      // const { closeDialog } = props;
+      // if (closeDialog) {
+      //   closeDialog();
+      // }
+    } catch (error) {
+      console.log('Failed to login:', error);
+      // enqueueSnackbar(error.message, { variant: 'error' });
+    }
+
+
   };
 
   return (

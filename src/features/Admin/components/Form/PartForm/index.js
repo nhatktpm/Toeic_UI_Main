@@ -2,11 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import axios from 'axios';
 import InputField from 'components/form-controls/InputField';
 import PasswordField from 'components/form-controls/PasswordField';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { set, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 
@@ -23,11 +24,15 @@ function PartForm(props) {
     name: yup.string().required('Please enter title').min(5, 'Title is too short'),
   });
 
+  const initvalu = { ...initialValues }
 
+  const [avatar, setAvatar] = useState('11')
+
+  // const [dt, setDt] = useState(initvalu)
   const form = useForm({
-    defaultValues: initialValues,
+    defaultValues: initvalu,
     resolver: yupResolver(schema),
-  });
+  })
 
   const handleSubmit = (values) => {
     const { onSubmit } = props;
@@ -38,6 +43,27 @@ function PartForm(props) {
   };
 
   const { isSubmitting } = form.formState;
+
+  // \\
+  const changeIMG = async (e) => {
+
+    e.preventDefault()
+    try {
+      const file = e.target.files[0]
+      let formData = new FormData()
+      formData.append('file', file)
+
+      const res = await axios.post('http://localhost:9599/admin/upload_avatar', formData, {
+        headers: { 'content-type': 'multipart/form-data', }
+      })
+
+      setAvatar(res.data.url)
+
+      console.log(avatar);
+    } catch (error) {
+    }
+  }
+
 
   return (
     <Box className='content-list'>
@@ -51,16 +77,7 @@ function PartForm(props) {
                 <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
               </Box>
             </Box>
-            <Box className='button-add'>
-              <Button
-                variant="contained"
-                color="secondary"
-                // className={classes.button}
-                startIcon={<AddCircleIcon />}
-              >
-                Add Part
-              </Button>
-            </Box>
+
             <Box className='table-body'>
               <form onSubmit={form.handleSubmit(handleSubmit)}>
 
@@ -77,6 +94,8 @@ function PartForm(props) {
                       <Grid item md={12}>
                         <Box className='inp'>
                           <InputField name="descrip" label="Description" form={form} />
+
+                          <InputField name="img" label="Description" form={form} />
                         </Box>
                       </Grid>
                     </Grid>
@@ -85,29 +104,38 @@ function PartForm(props) {
 
                   <Grid item md={3}>
                     <Box className='inp'>
-                      <InputField name="img" label="Upload File" form={form} />
-                      
+                      <Box > <img className="img-in-upload" height="100px" src={`${avatar}`} alt='' />  </Box>
+
+                      {/* <InputField name="img" label="Upload File" form={form} /> */}
+
+                      <span >
+                        <p>Upload</p>
+                        <input type="file" name="file" id="file_up" onChange={changeIMG} />
+                      </span>
+
                     </Box>
                   </Grid>
 
-
+                  {form.setValue("img", avatar)}
                 </Grid>
                 <Grid item md={12}>
-                  <Box  className='btn-edit-part' pb={4} mt={5}>
+                  <Box className='btn-edit-part' pb={4} mt={5}>
                     <Button
-                
+
                       disabled={isSubmitting}
                       type="submit"
                       // className={classes.submit}
                       variant="outlined"
                       color="secondary"
                       // fullWidth
-                      size="large"                     
+                      size="large"
+
                     >
                       Edit Part
                 </Button>
                   </Box>
                 </Grid>
+
               </form>
             </Box>
           </Box>

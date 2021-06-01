@@ -11,8 +11,7 @@
 
     background-color: #f14d5d;
     padding: 8px 16px;
-    
-   
+
     transition: all 0.5s ease;
 }
 
@@ -26,13 +25,14 @@
     width: 550px;
 }
 
-.part-1-choose{
+.part-1-choose {
     text-align: center;
 }
 
-.dung{
-  background-color: #f14d5d;
-}
+.dung .MuiRadio-colorSecondary.Mui-checked {
+    background-color: #43a047;
+   color: #d1dfd2;
+} 
 
 /* .sai span{
     color: rgb(204, 4, 4);

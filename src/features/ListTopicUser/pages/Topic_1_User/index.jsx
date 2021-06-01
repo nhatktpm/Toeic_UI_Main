@@ -1,6 +1,7 @@
 
 import { Box, Container, Grid } from '@material-ui/core';
 import { computeHeadingLevel } from '@testing-library/dom';
+import listPartApi from 'api/listPartApi';
 import listTopicAPI from 'api/listTopicAPI';
 import PartUser from 'features/ListPartUser/pages/PartUser';
 import TopicItem from 'features/ListTopicUser/component/TopicItem';
@@ -20,19 +21,21 @@ function Topic_1_User(props) {
 
     const match = useRouteMatch();
     let idTopic = match.url.split('/')[2]
-  
+
 
 
 
     const [loading, setLoading] = useState(true);
     const [listTopic, setListTopic] = useState([]);
+    const [part, setPart] = useState([]);
 
     useEffect(() => {
         (async () => {
             try {
                 const data = await listTopicAPI.getAll(idTopic)
                 setListTopic(data.data.topics);
-                
+                const dataPart = await listPartApi.get(idTopic)
+                setPart(dataPart.data.data)
             } catch (error) {
                 console.log('Failed to fetch product list: ', error);
             }
@@ -40,15 +43,16 @@ function Topic_1_User(props) {
         })();
     }, []);
 
-  
+    console.log(part);
 
     return (
         <Box className='asd'>
             <Box className='bg-title-topic'>
                 <Container maxWidth="xl" disableGutters={true}>
-
-                    <Box className='title-part'> part title</Box>
-
+                    <Box className="ct-title-listTopic">
+                        <Box className='title-part'>{part.name}</Box>
+                        <Box className='title-descrip'>{part.descrip} </Box>
+                    </Box>
                 </Container>
             </Box>
 

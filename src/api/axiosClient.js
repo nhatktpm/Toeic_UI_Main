@@ -27,6 +27,13 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
+    const { config, status, data } = error.response;
+    const URLS = ['/auth/login', '/auth/register'];
+    if (URLS.includes(config.url) && status === 400) {
+ 
+    //   throw new Error(firstMessage.message);
+    }
+
     return Promise.reject(error);
 });
 

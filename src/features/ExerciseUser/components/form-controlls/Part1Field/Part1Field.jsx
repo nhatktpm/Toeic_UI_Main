@@ -25,6 +25,8 @@ Part1Field.propTypes = {
 function Part1Field(props) {
 
   const { form, name, cauhoi, color } = props;
+
+
   console.log(color);
 
   const useStyles = makeStyles((theme) => ({
@@ -75,31 +77,31 @@ function Part1Field(props) {
                           justify="space-evenly"
                           alignItems="center">
 
-                          <Grid item xl={3} md={3}>
+                          <Grid className={classnames({ 'dung': color })} item xl={3} md={3}>
                             <Box className='part-1-choose'  >
                               <FormControlLabel value="a"
-                                control={<Radio className={classnames({ dung: color })} />}
-                                label="cau a" />
+                                control={<Radio  />}
+                                label="A" />
                             </Box>
                           </Grid>
 
-                          <Grid item xl={3} md={3}>
+                          <Grid className={classnames({ 'dung': color })}  item xl={3} md={3}>
                             <Box className='part-1-choose'>
-                              <FormControlLabel value="b" 
-                              control={<Radio className={classnames({ dung: color })} />} 
-                              label="cau b" />
+                              <FormControlLabel value="b"
+                                control={<Radio />}
+                                label="B" />
                             </Box>
                           </Grid>
 
-                          <Grid item xl={3} md={3}>
+                          <Grid className={classnames({ 'dung': color })}  item xl={3} md={3}>
                             <Box className='part-1-choose'>
-                              <FormControlLabel value="c" control={<Radio />} label="cau c" />
+                              <FormControlLabel value="c" control={<Radio />} label="C" />
                             </Box>
 
                           </Grid>
-                          <Grid item xl={3} md={3}>
+                          <Grid className={classnames({ 'dung': color })}  item xl={3} md={3}>
                             <Box className='part-1-choose'>
-                              <FormControlLabel value="d" disabled control={<Radio />} label="(Disabled )" />
+                              <FormControlLabel value="d" control={<Radio />} label="D" />
                             </Box>
                           </Grid>
                         </Grid>

@@ -7,7 +7,7 @@ const listPartApi = {
 
     },
     get(id) {
-        const url = `/part/${id}`;
+        const url = `/admin/part/${id}`;
         return axiosClient.get(url);
     },
     update(id, data) {

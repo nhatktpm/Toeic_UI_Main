@@ -1,11 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import PartForm from '../Form/PartForm';
-import { useHistory, useRouteMatch } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
 import { editPart } from 'features/Admin/Slice/PartSlice';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router';
+import PartForm from '../Form/PartForm';
 
 EditPart.propTypes = {
 
@@ -23,6 +21,7 @@ function EditPart(props) {
       part: values
     }
     console.log(values);
+    
     const action = editPart(data);
     const resultAction = await dispath(action);
 
@@ -53,7 +52,7 @@ function EditPart(props) {
   return (
     <div>
 
-      <PartForm initialValues={initialValues} onSubmit={handleEditPartFormSubmit} />
+      <PartForm initialValues={initialValues}  onSubmit={handleEditPartFormSubmit} />
 
     </div>
   );

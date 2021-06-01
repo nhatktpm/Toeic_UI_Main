@@ -51,11 +51,9 @@ function ExerPart2Form(props) {
         }
 
     ]
-
-
+    
     return (
         <div>
-
 
             <Box className={classes.bgForm}>
 

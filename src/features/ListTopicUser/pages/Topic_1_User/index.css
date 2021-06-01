@@ -1,4 +1,20 @@
 .bg-title-topic{
-    background-color: blue;
+    background-color: #fef8ef;
     height: 200px;
+}
+
+.ct-title-listTopic{
+
+}
+
+.ct-title-listTopic .title-part{
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.ct-title-listTopic .title-descrip{
+    width: 70%;
+    margin: 0 auto;
 }

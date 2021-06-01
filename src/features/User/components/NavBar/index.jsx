@@ -1,8 +1,10 @@
 import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { animateScroll as scroll } from 'react-scroll';
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import '../NavBar/index.css';
+
+
 
 // onClick={() => scroll.scrollToTop()}    Scroll to top
 NavBar.propTypes = {
@@ -29,32 +31,35 @@ function NavBar(props) {
                     <Grid container alignItems="center">
                         <Grid item lg={3}>
                             <Box className='nav-logo'>
-                                <Link to='/'>
+                                <NavLink to='/'>
                                     <img src="https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/02/logo.png" alt='' />
-                                </Link></Box>
+                                </NavLink></Box>
                         </Grid>
                         <Grid item lg={7} >
                             <Box className='contai-link'>
 
                                 <Box>
-                                    <Link to="/list-part" className={classes.link}>
+                                    <NavLink to="/list-part" className={classes.link}>
                                         <Box className='nav-link'>
                                             <span className='link-text'>Toeic</span>
                                         </Box>
-                                    </Link>
+                                    </NavLink>
                                 </Box>
 
                                 <Box>
                                     <Box className='nav-link' >
-                                        <span className='link-text' >toeic listening</span>
-
+                                        <Link to="listten" smooth={true} duration={2000}>
+                                            <span className='link-text' >toeic listening</span>
+                                        </Link>
                                     </Box>
                                 </Box>
 
                                 <Box>
                                     <Box className='nav-link'>
+                                        <Link to="readpart" smooth={true} duration={2000}>
+                                            <span className='link-text'>Toeic reading</span>
+                                        </Link>
 
-                                        <span className='link-text'>Toeic reading</span>
                                     </Box>
                                 </Box>
 
@@ -91,6 +96,8 @@ function NavBar(props) {
                 </Box>
 
             </Container>
+
+
 
         </Box>
     );

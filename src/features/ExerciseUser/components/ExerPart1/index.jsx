@@ -29,8 +29,7 @@ function ExerPart1(props) {
 
     const handleSubmit = async (values) => {
 
-        let mark = 0;
-       
+        let mark = 0;       
 
         let listAnswer = listExerState.map((answer) => {
             let newAnswer = { ...answer }

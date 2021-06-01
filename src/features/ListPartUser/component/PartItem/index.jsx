@@ -36,6 +36,7 @@ function PartItem(props) {
                 </Box>
                 <Box>
                     <Box className='contai-part-info'>
+                    <Box className="free-part"> Free</Box>
                         <Box mb={2} ml={3} className='part-date'> ngay 1 thang 1</Box>
                         <Box mb={1} className='part-name'> {part.name}</Box>
                         <Box mb={2} className='part-social'>
@@ -51,7 +52,7 @@ function PartItem(props) {
                         </Box>
                         <Box className='part-action'>
                             <Link className={classes.link} to={`/list-topic/${part._id}`}>
-                                <Box className='btn-action action_detail'  > chi tiet </Box>
+                                <Box className='btn-action action_detail'  ml="25px"> Chi Tiết</Box>
                             </Link>
 
                             {/* <Link className={classes.link} to='/exercise/asd/asd'>

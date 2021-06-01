@@ -61,7 +61,7 @@ function Home(props) {
                 <Banner />
             </Box>
 
-            <Box>
+            <Box id='listten'>
                 <ListTenCard listpart={PartRead} />
             </Box>
 
@@ -77,7 +77,7 @@ function Home(props) {
                             <Grid item lg={10}>
                             <Box>
 
-                                <Box className='text-title-readi'>Reading Toeic Test</Box>
+                                <Box id='readpart' className='text-title-readi'>Reading Toeic Test</Box>
                             { PartListten.map((part)=>{
                               return  <PartItem part ={part}/>
                             })}

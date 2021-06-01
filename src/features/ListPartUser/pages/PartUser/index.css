@@ -1,15 +1,21 @@
-
-.bg-title-part{
+.bg-title-part {
     display: flex;
     justify-content: center;
     align-items: center;
 
     height: 200px;
-    background-color: rgb(39, 129, 99);
+    background-color: #fef8ef;
 }
 
-.title-part{
-
+.title-part {
+    color: #120f2d;
+    margin: 0 150px 80px 150px;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 60px;
+}
+.title-part:hover {
+    color: #f14d5d;
 }
 
 /* //
@@ -27,7 +33,6 @@ CSS Intro
     flex-direction: row;
     justify-content: space-between;
 }
-
 
 /* 
 CSS Part content

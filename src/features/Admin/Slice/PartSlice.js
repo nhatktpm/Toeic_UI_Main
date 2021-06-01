@@ -37,6 +37,8 @@ const PartSlice = createSlice({
         },
         [editPart.fulfilled]: (state, action) => {
             const newPart = action.payload;
+
+            
            
             const partIndex = state.listPart.findIndex(part => part._id === newPart.id);
 
