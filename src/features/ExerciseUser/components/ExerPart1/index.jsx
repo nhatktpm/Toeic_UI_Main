@@ -25,11 +25,17 @@ function ExerPart1(props) {
     // var newExer = [...listExerState]
     console.log(listExerState);
 
-    var isLoggin = true;
+    const loginUser = useSelector(state => state.user.current)
+
+    const isLoggin = !!loginUser.email
+
+
 
     const handleSubmit = async (values) => {
 
-        let mark = 0;       
+        let mark = 0;
+        if (isLoggin) { 
+
 
         let listAnswer = listExerState.map((answer) => {
             let newAnswer = { ...answer }
@@ -42,6 +48,7 @@ function ExerPart1(props) {
             };
             return newAnswer
         })
+
         let data = {
             dataAPI: {
                 point: mark,
@@ -52,9 +59,9 @@ function ExerPart1(props) {
         }
         const action = getAnswer(data)
         const resultAction = await dispatch(action)
-
+    }
         if (!isLoggin) {
-            
+
             Swal.fire({
                 title: 'Bạn Chưa Đăng Nhập',
                 text: "Đăng nhập để nhận kết quả",
@@ -69,25 +76,25 @@ function ExerPart1(props) {
                 }
             })
         }
-        
-        if(isLoggin){
+
+        if (isLoggin) {
             Swal.fire({
 
-                title: `Bạn đạt được: ${mark} Điểm ` ,
+                title: `Bạn đạt được: ${mark} Điểm `,
                 text: "Nhấn OK Để Xem Đáp Án Của Bài Thi",
                 icon: 'success',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'OK'
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                  
+
                 }
-              })
+            })
         }
 
-        
+
     };
 
 

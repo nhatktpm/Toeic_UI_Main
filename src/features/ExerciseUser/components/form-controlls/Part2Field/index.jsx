@@ -64,25 +64,25 @@ function Part2Field(props) {
                           alignItems="center">
 
                           <Grid item xl={3} md={3}>
-                            <Box className='part-1-choose'>
+                            <Box className='part-2-choose'>
                               <FormControlLabel value="a" control={<Radio />} label="cau a" />
                             </Box>
                           </Grid>
 
                           <Grid item xl={3} md={3}>
-                            <Box className='part-1-choose'>
+                            <Box className='part-2-choose'>
                               <FormControlLabel value="b" control={<Radio />} label="cau b" />
                             </Box>
                           </Grid>
 
                           <Grid item xl={3} md={3}>
-                            <Box className='part-1-choose'>
+                            <Box className='part-2-choose'>
                               <FormControlLabel value="c" control={<Radio />} label="cau c" />
                             </Box>
 
                           </Grid>
                           <Grid item xl={3} md={3}>
-                            <Box className='part-1-choose'>
+                            <Box className='part-2-choose'>
                               <FormControlLabel value="d" disabled control={<Radio />} label="(Disabled )" />
                             </Box>
                           </Grid>

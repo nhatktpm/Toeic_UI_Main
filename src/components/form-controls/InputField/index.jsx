@@ -12,7 +12,7 @@ InputField.propTypes = {
 };
 
 function InputField(props) {
-  const { form, name, label, disable } = props;
+  const { form, name, label, disable, row } = props;
   const { control } = form;
 
 
@@ -25,7 +25,7 @@ function InputField(props) {
         <TextField
           margin="normal"
           variant="outlined"
-          rows={3}
+          rows={row}
           fullWidth
           label={label}
           error={invalid}

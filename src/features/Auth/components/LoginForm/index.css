@@ -1,0 +1,14 @@
+.link-forgot {
+    color: black;
+    text-align: end;
+    margin: 15px 0px;
+    transition: all 0.25s;
+}
+.link-forgot:hover {
+    color: #f50057;
+}
+
+.text-bot{
+    margin-top: 20px;
+    text-align: end;
+}

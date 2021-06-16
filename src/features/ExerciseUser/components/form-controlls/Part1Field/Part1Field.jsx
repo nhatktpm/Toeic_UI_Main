@@ -62,7 +62,7 @@ function Part1Field(props) {
                   <Box>
                     <Container>
                       <Box mt="30px">
-                        <Box className='ques-stt' component='span'>{cauhoi._id}</Box>
+                        <Box className='ques-stt' component='span'>{cauhoi.cauhoi}</Box>
                       </Box>
 
                       <Box className='ques-content'>

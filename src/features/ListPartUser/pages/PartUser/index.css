@@ -39,4 +39,52 @@ CSS Part content
 */
 
 .contai-list {
+    margin-left: 50px;
+}
+
+/* thong tin ben trai */
+.if-contai {
+    background-color: #f8f9f8;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+.if-title {
+    font-size: 24px;
+    text-align: center;
+    padding: 25px;
+    text-transform: capitalize;
+}
+.if-info {
+    padding: 15px;
+}
+.if-item {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: aliceblue;
+    padding: 10px 20px;
+    border-top: 2px solid rgb(196, 190, 190);
+}
+.if-name,
+.if-icon {
+    display: inline-block;
+}
+
+.if-icon-name {
+    display: flex;
+    align-items: center;
+}
+
+.if-icon-name .if-icon {
+    color: #f14d5d;
+}
+.if-icon-name .if-name {
+    margin-left: 15px;
+    color: #221638;
+    font-weight: bold;
+}
+.if-text {
+color: #606060;
 }

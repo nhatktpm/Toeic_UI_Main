@@ -1,0 +1,21 @@
+.left-confirm img{
+    width: 500px;
+}
+
+.contai-confirm{
+text-align: center;
+margin-top: 100px;
+}
+.noti-confirm{
+background-color: #43a047;
+color: white;
+
+padding: 10px;
+font-size: 22px;
+margin-bottom: 30px;
+
+border-radius: 3px;
+}
+.link-noti{
+
+}

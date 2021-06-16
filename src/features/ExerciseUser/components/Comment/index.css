@@ -3,6 +3,7 @@
 }
 .comment-contai {
     margin-left: 15px;
+    width: 90%;
 }
 .comment-contai > .comment-name {
 }
@@ -18,6 +19,8 @@
 }
 .comment-contai > .comment-content {
     font-size: 14px;
+    line-height: 1.5;
+    margin-top: 10px;
 }
 .comment-contai > .comment-action {
     font-size: 12px;

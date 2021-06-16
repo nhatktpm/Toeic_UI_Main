@@ -67,10 +67,10 @@ function Part(props) {
             <Box className='table-title'>
               <Box className='content-title'>
                 <AcUnitIcon className='table-icon' />
-                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                <Typography variant='h5' className='part-text'> Manage Part</Typography>
               </Box>
             </Box>
-            <Box className='button-add'>
+            {/* <Box className='button-add'>
               <Button
                 variant="contained"
                 color="secondary"
@@ -79,7 +79,7 @@ function Part(props) {
               >
                 Add Part
               </Button>
-            </Box>
+            </Box> */}
             <Box className='table-body'>
               <table class="content-table">
                 <thead>

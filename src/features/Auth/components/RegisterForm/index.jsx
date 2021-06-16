@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Avatar, Button, LinearProgress, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Box, Button, LinearProgress, makeStyles, Typography } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
 import InputField from 'components/form-controls/InputField';
 import PasswordField from 'components/form-controls/PasswordField';
@@ -7,12 +7,13 @@ import PasswordField from 'components/form-controls/PasswordField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    padding : '50px',
+    padding : '30px',
   },
 
   avatar: {
@@ -45,6 +46,20 @@ function RegisterForm(props) {
   const classes = useStyles();
 
   const schema = yup.object().shape({
+    fullName: yup
+      .string()      
+      .required('Please enter your full name.')
+      .matches(/^[aA-zZ\s]+$/, "No special characters, Only letters and numbers ")
+      .test('should has at least two words', 'Please enter at least two words.', (value) => {
+        return value.split(' ').length >= 2;
+      }),
+
+    email: yup.string().required('Please enter your email.').email('Please enter a valid email address.'),
+    password: yup.string().required('Please enter your password').min(6, 'Please enter at least 6 characters.'),
+    retypePassword: yup
+      .string()
+      .required('Please retype your password.')
+      .oneOf([yup.ref('password')], 'Password does not match'),
 
   });
   const form = useForm({
@@ -89,12 +104,16 @@ function RegisterForm(props) {
           type="submit"
           className={classes.submit}
           variant="contained"
-          color="primary"
+          color="secondary"
           
           size="large"
         >
-          Create an account
+         Create an account 
         </Button>
+
+        <Box className="text-bot">
+          <Box component='span'>Already a member? </Box>  <Link to="/auth"> Login  </Link>
+        </Box>
       </form>
     </div>
   );

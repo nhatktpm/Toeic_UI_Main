@@ -18,13 +18,12 @@
 
 .contai-nav .contai-link {
     display: flex;
-   
 }
 
 .contai-nav .contai-link .nav-link {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 28px;  
+    line-height: 28px;
     text-transform: capitalize;
 
     display: flex;
@@ -32,7 +31,7 @@
 
     position: relative;
     margin-right: 50px;
-    
+
     cursor: pointer;
 }
 
@@ -47,7 +46,7 @@
 
     transition: all 0.25s linear;
 }
-.nav-link:hover::after {    
+.nav-link:hover::after {
     width: 100%;
     background-color: #3c84ed;
     transition: all 0.25s linear;
@@ -57,11 +56,56 @@
 
 } */
 .nav-link:hover,
- .link-text:hover {
-color: #3c84ed;
+.link-text:hover {
+    color: #3c84ed;
 }
 
 .contai-nav .auth {
     display: flex;
     justify-content: flex-end;
+}
+
+.toeic-cha {
+    position: relative;
+}
+
+.nav-auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* .link-tog {
+    text-decoration: none;
+}
+.link-tog::before {
+    content: "";
+    height: 250px;
+    width: 100px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #3c84ed;
+    transform: translateY(-10%);
+}
+
+.link-tog:hover + .toeic-child {
+    display: block;
+    height: 100px;
+}
+.toeic-child {
+    display: none;
+    position: absolute;
+    background-color: antiquewhite;
+    top: 30px;
+    width: 100px;
+    text-align: center;
+
+    flex-direction: column;
+} */
+
+.sub-menu {
+    color: rgb(148, 114, 114);
 }

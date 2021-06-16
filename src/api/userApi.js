@@ -9,6 +9,10 @@ const userApi = {
     get(id) {
         const url = `/user/${id}`;
         return axiosClient.get(url); 
+    },    
+    confirm(data) {
+        const url = `/auth/confirm-email`;
+        return axiosClient.post(url,data); 
     },
     login(data) {
         const url = '/auth/login';

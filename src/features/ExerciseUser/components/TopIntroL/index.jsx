@@ -14,7 +14,7 @@ function TopIntroL(props) {
                         alignItems="center"
                     >
                         <Grid item lg={12}>
-                            <Box className='top-title-l'>eCademy Popular Courses</Box>
+                            <Box className='top-title-l'>Course Popular Courses</Box>
 
                         </Grid>
                         <Grid item lg={12}>
@@ -25,7 +25,7 @@ function TopIntroL(props) {
                         <Grid item lg={12}>
                             <Box className='audio-part'>
                                 <ReactAudioPlayer
-                                    src="https://khotracnghiem.vn/upload/questions/audios/de-thi-toeic-part-1-ets-2020-test-2-co-dap-an-chi-tiet-1061058482.mp3"
+                                    src="https://noidung.tienganh123.com/file/luyen-thi-toeic/part1%20practice/in%20the%20office%202/in%20the%20office%202.mp3"
                                     // autoPlay
                                     controls
                                 />

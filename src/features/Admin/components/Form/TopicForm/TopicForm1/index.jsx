@@ -8,9 +8,10 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import axios from 'axios';
 
 TopicForm1.propTypes = {
     onSubmit: PropTypes.func,
@@ -19,20 +20,27 @@ TopicForm1.propTypes = {
 function TopicForm1(props) {
 
     const { initialValues, editMode } = props;
-
+    
 
     const schema = yup.object().shape({
-        nameTopic: yup.string().required('Please enter title').min(5, 'Title is too short'),
+        nameTopic: yup.string().required('Please enter title').min(5, 'Name topicis too short'),
+        descrip: yup.string().required('Please enter descrip').min(5, 'Title is too short'),
+        translate_vn: yup.string().required('Please enter translate vn').min(5, 'Title is too short'),
+        translate_eng: yup.string().required('Please enter translate eng').min(5, 'Title is too short'),
     });
-
+    const initvalu = { ...initialValues }
+    if (!editMode) {
+        initvalu.img=''
+    }
+    const [avatar, setAvatar] = useState(initvalu.img)
 
 
     const form = useForm({
         defaultValues: editMode ? initialValues :
             {
-                nameTopic: "Chu De ",
+                nameTopic: "Topic  ",
                 img: "",
-                descrip: "1",
+                descrip: "",
                 part: "60197e3072dbac87905bc3b4",
                 audio: "",
                 translate_vn: "",
@@ -40,7 +48,7 @@ function TopicForm1(props) {
                 question: []
             }
         ,
-        // resolver: yupResolver(schema),
+        resolver: yupResolver(schema),
     });
 
     const handleSubmit = (values) => {
@@ -53,6 +61,28 @@ function TopicForm1(props) {
 
     const { isSubmitting } = form.formState;
 
+
+    const changeIMG = async (e) => {
+
+        e.preventDefault()
+        try {
+            const file = e.target.files[0]
+            let formData = new FormData()
+            formData.append('file', file)
+
+            const res = await axios.post('http://localhost:9599/admin/upload_img', formData, {
+                headers: { 'content-type': 'multipart/form-data', }
+            })
+
+            setAvatar(res.data.url)
+
+            console.log(avatar);
+        } catch (error) {
+        }
+    }
+
+
+
     return (
 
 
@@ -64,18 +94,18 @@ function TopicForm1(props) {
                         <Box className='table-title'>
                             <Box className='content-title'>
                                 <AcUnitIcon className='table-icon' />
-                                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                                <Typography variant='h5' className='part-text'>Manage Topic</Typography>
                             </Box>
                         </Box>
                         <Box className='button-add'>
-                            <Button
+                            {/* <Button
                                 variant="contained"
                                 color="secondary"
                                 // className={classes.button}
                                 startIcon={<AddCircleIcon />}
                             >
-                                Add Part
-                            </Button>
+                                Add Topic
+                            </Button> */}
                         </Box>
                         <Box className='table-body'>
                             <form onSubmit={form.handleSubmit(handleSubmit)}>
@@ -98,13 +128,13 @@ function TopicForm1(props) {
 
                                             <Grid item md={12}>
                                                 <Box className='inp'>
-                                                    <InputField name="d" label="Translate VN" form={form} />
+                                                    <InputField name="translate_vn" label="Translate VN" form={form} />
                                                 </Box>
                                             </Grid>
 
                                             <Grid item md={12}>
                                                 <Box className='inp'>
-                                                    <InputField name="d" label="Translate English" form={form} />
+                                                    <InputField name="translate_eng" label="Translate English" form={form} />
                                                 </Box>
                                             </Grid>
 
@@ -114,12 +144,21 @@ function TopicForm1(props) {
 
                                     <Grid item md={3}>
                                         <Box className='inp'>
-                                            <InputField name="img" label="Upload File" form={form} />
-                                        </Box>
+                                            <Box > <img className="img-in-upload" height="100px" src={`${avatar}`} alt='' />  </Box>
 
-                                        <Box className='inp'>
-                                            <InputField name="asd" label="Upload File" form={form} />
+                                            {/* <InputField name="img" label="Upload File" form={form} /> */}
+
+                                            <span >
+                                                <p>Upload</p>
+                                                <input type="file" name="file" id="file_up" onChange={changeIMG} />
+                                            </span>
+
                                         </Box>
+                                        {form.setValue("img", avatar)}
+
+                                        {/* <Box className='inp'>
+                                            <InputField name="asd" label="Upload File" form={form} />
+                                        </Box> */}
 
                                     </Grid>
 
@@ -132,14 +171,14 @@ function TopicForm1(props) {
                                             type="submit"
                                             // className={classes.submit}
                                             variant="contained"
-                                            color="primary"
+                                            color="secondary"
 
                                             size="large"
                                         >
                                             {editMode ? "Edit Topic" : "Add Topic"}
                                         </Button>
                                     </Box>
-                                </Grid>                                
+                                </Grid>
                             </form>
                         </Box>
                     </Box>

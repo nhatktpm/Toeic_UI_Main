@@ -48,6 +48,36 @@ function ExerPart2Form(props) {
             namecauhoi: 'cau hoi so 1',
             a: 'a',
             dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
+        },{
+            id: '11',
+            namecauhoi: 'cau hoi so 1',
+            a: 'a',
+            dapan: 'c'
         }
 
     ]
@@ -65,9 +95,9 @@ function ExerPart2Form(props) {
                             })
                         }
 
-                        <Box my={4}> phan trang</Box>
+                        {/* <Box my={4}> phan trang</Box> */}
 
-                        <Box my={2}>Sau khi hoàn thiện bài làm hãy bấm vào nút nộp bài bên dưới</Box>
+                        <Box my={2}  className='saukhihoanthien'>Sau khi hoàn thiện bài làm hãy bấm vào nút nộp bài bên dưới</Box>
                         <Box my={2} className={classes.btnSubmit}>
                             <Button
                                 type="submit"

@@ -1,6 +1,7 @@
 .bg-listen-card {
     background: #fff url(https://demo.themewinter.com/wp/courselog/wp-content/uploads/2020/12/testimonial_bg.png) center
         center/cover no-repeat;
+        margin-top: 60px;
 }
 .title-list-card {
     text-align: center;

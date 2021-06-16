@@ -3,21 +3,20 @@ import AllComment from 'features/ExerciseUser/components/AllComment';
 import ExerMenu from 'features/ExerciseUser/components/ExerMenu';
 import ExerPart1 from 'features/ExerciseUser/components/ExerPart1';
 import ExerPart2 from 'features/ExerciseUser/components/ExerPart2';
+import ExerPart5 from 'features/ExerciseUser/components/ExerPart5';
 import Note from 'features/ExerciseUser/components/Note';
 import Solution from 'features/ExerciseUser/components/Solution';
-
 import TopIntroL from 'features/ExerciseUser/components/TopIntroL';
-import NavBar from 'features/User/components/NavBar';
-
-
-import React, { useEffect, useState } from 'react';
-
-import { Route, Switch, useRouteMatch } from 'react-router';
-import QuestionApi from 'api/listQuestionApi';
-import './index.css'
-import listTopicAPI from 'api/listTopicAPI';
-import { useDispatch } from 'react-redux';
 import { getListExer, getTopicExer } from 'features/ExerciseUser/ExerciseSlice';
+import NavBar from 'features/User/components/NavBar';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Switch, useRouteMatch } from 'react-router';
+import './index.css';
+
+
+
+
 
 
 function DetailExercise(props) {
@@ -49,18 +48,18 @@ function DetailExercise(props) {
     const [listExer, SetListExer] = useState([]);
     const [toPic, SetTopic] = useState([]);
     const [loading, setLoading] = useState(true);
-   
+
 
     const dispath = useDispatch()
 
     useEffect(() => {
-        (async () => {            
+        (async () => {
             const resultAction = await dispath(getListExer(idTopic))
             const resultAction2 = await dispath(getTopicExer(idTopic))
         })()
     }, []);
-     
-    
+
+
 
     const exerciseOfPart = (slug) => {
 
@@ -69,12 +68,22 @@ function DetailExercise(props) {
                 return <ExerPart1 listQuestion={listExer} />;
             case 'topic-2':
                 return <ExerPart2 listQuestion={listExer} />;
+            case 'topic-3':
+                return <ExerPart2 listQuestion={listExer} />;
+            case 'topic-4':
+                return <ExerPart2 listQuestion={listExer} />;
+            case 'topic-5':
+                return <ExerPart5 listQuestion={listExer} />;
+            case 'topic-6':
+                return <ExerPart2 listQuestion={listExer} />;
+            case 'topic-7':
+                return <ExerPart2 listQuestion={listExer} />;
             default:
                 return 'foo';
         }
     }
 
-   
+
 
     return (
         <div>
@@ -117,11 +126,11 @@ function DetailExercise(props) {
                                 <Switch>
 
                                     <Route path={`${match.url}`} exact >
-                                        <AllComment />
+                                        <AllComment slug={slug} />
                                     </Route>
 
                                     <Route path={`${match.url}/note`}>
-                                        <Note />
+                                        <Note slug={slug} />
                                     </Route>
 
                                     <Route path={`${match.url}/solution`}>
@@ -129,7 +138,7 @@ function DetailExercise(props) {
                                     </Route>
 
                                     <Route path={`${match.url}/note`}>
-                                        <Note />
+                                        <Note slug={slug} />
                                     </Route>
 
                                 </Switch>

@@ -26,7 +26,7 @@ function PartForm(props) {
 
   const initvalu = { ...initialValues }
 
-  const [avatar, setAvatar] = useState('11')
+  const [avatar, setAvatar] = useState(initvalu.img)
 
   // const [dt, setDt] = useState(initvalu)
   const form = useForm({
@@ -45,6 +45,7 @@ function PartForm(props) {
   const { isSubmitting } = form.formState;
 
   // \\
+  
   const changeIMG = async (e) => {
 
     e.preventDefault()
@@ -74,7 +75,7 @@ function PartForm(props) {
             <Box className='table-title'>
               <Box className='content-title'>
                 <AcUnitIcon className='table-icon' />
-                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                <Typography variant='h5' className='part-text'> Part Form</Typography>
               </Box>
             </Box>
 
@@ -93,9 +94,8 @@ function PartForm(props) {
 
                       <Grid item md={12}>
                         <Box className='inp'>
-                          <InputField name="descrip" label="Description" form={form} />
-
-                          <InputField name="img" label="Description" form={form} />
+                          <InputField row={3} name="descrip" label="Description" form={form} />
+                          
                         </Box>
                       </Grid>
                     </Grid>
@@ -114,9 +114,10 @@ function PartForm(props) {
                       </span>
 
                     </Box>
+                    {form.setValue("img", avatar)}
                   </Grid>
 
-                  {form.setValue("img", avatar)}
+             
                 </Grid>
                 <Grid item md={12}>
                   <Box className='btn-edit-part' pb={4} mt={5}>
@@ -135,7 +136,6 @@ function PartForm(props) {
                 </Button>
                   </Box>
                 </Grid>
-
               </form>
             </Box>
           </Box>

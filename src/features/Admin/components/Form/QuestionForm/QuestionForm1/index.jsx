@@ -1,9 +1,10 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import axios from 'axios';
 import InputField from 'components/form-controls/InputField';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -20,18 +21,22 @@ function QuestionForm1(props) {
     const schema = yup.object().shape({
         cauhoi: yup.string().required('Please enter title').min(5, 'Title is too short'),
     });
-
+    const initvalu = { ...initialValues }
+    if (!editMode) {
+        initvalu.img=''
+    }
+    const [avatar, setAvatar] = useState(initvalu.img)
 
     const form = useForm({
         defaultValues: editMode ? initialValues :
             {
-                cauhoi: "1 ",
-                caua: "l",
+                cauhoi: "Câu ",
+                caua: "",
                 caub: "b",
                 cauc: "c",
                 caud: "d",
-                dapandung: "1",
-                img: "1"               
+                dapandung: "a",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhItDEsENI2qy_YkEN4y42uuygg_m7IoQ5A&usqp=CAU"               
             }
         ,
         // resolver: yupResolver(schema),
@@ -47,6 +52,26 @@ function QuestionForm1(props) {
 
     const { isSubmitting } = form.formState;
 
+
+    const changeIMG = async (e) => {
+
+        e.preventDefault()
+        try {
+          const file = e.target.files[0]
+          let formData = new FormData()
+          formData.append('file', file)
+    
+          const res = await axios.post('http://localhost:9599/admin/upload_avatar', formData, {
+            headers: { 'content-type': 'multipart/form-data', }
+          })
+    
+          setAvatar(res.data.url)
+    
+          console.log(avatar);
+        } catch (error) {
+        }
+      }
+
     return (
 
         <Box className='content-list'>
@@ -57,7 +82,7 @@ function QuestionForm1(props) {
                     <Box className='table-title'>
                         <Box className='content-title'>
                             <AcUnitIcon className='table-icon' />
-                            <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                            <Typography variant='h5' className='part-text'> Manage Question</Typography>
                         </Box>
                     </Box>
                     <Box className='button-add'>
@@ -65,9 +90,9 @@ function QuestionForm1(props) {
                             variant="contained"
                             color="secondary"
                             // className={classes.button}
-                            startIcon={<AddCircleIcon />}
+                            
                         >
-                            Add Part
+                            Back
                         </Button>
                     </Box>
                     <Box className='table-body'>
@@ -79,42 +104,63 @@ function QuestionForm1(props) {
                                     <Grid container>
                                         <Grid item md={12}>
                                             <Box className='inp'>
-                                            <InputField name="cauhoi" label="Question " form={form} />
+                                            <InputField name="cauhoi" label="Câu hỏi " form={form} />
                                             </Box>
                                         </Grid>
 
                                         <Grid item md={12}>
                                             <Box className='inp'>
-                                            <InputField name="dapandung" label="Day la hinh" form={form} />
+                                            <InputField name="dapandung" label="Đáp Án Đúng" form={form} />
                                             </Box>
                                         </Grid>
 
-                                        <Grid item md={12}>
+                                        <Grid item md={6}>
                                             <Box className='inp'>
-                                            <InputField name="img" label="day la hinh" form={form} />
+                                            <InputField name="caua" label="Câu A" form={form} />
                                             </Box>
                                         </Grid>
 
-                                        <Grid item md={12}>
+                                        <Grid item md={6}>
                                             <Box className='inp'>
-                                                <InputField name="d" label="Translate English" form={form} />
+                                                <InputField name="caub" label="Câu B" form={form} />
                                             </Box>
                                         </Grid>
 
+                                        <Grid item md={6}>
+                                            <Box className='inp'>
+                                                <InputField name="cauc" label="Câu C" form={form} />
+                                            </Box>
+                                        </Grid>
+
+                                        <Grid item md={6}>
+                                            <Box className='inp'>
+                                                <InputField name="caud" label="Câu D" form={form} />
+                                            </Box>
+                                        </Grid>
                                     </Grid>
 
                                 </Grid>
 
                                 <Grid item md={3}>
-                                    <Box className='inp'>
-                                        <InputField name="img" label="Upload File" form={form} />
-                                    </Box>
+                                        <Box className='inp'>
+                                            <Box > <img className="img-in-upload" height="100px" src={`${avatar}`} alt='' />  </Box>
 
-                                    <Box className='inp'>
-                                        <InputField name="asd" label="Upload File" form={form} />
-                                    </Box>
+                                            {/* <InputField name="img" label="Upload File" form={form} /> */}
 
-                                </Grid>
+                                            <span >
+                                                <p>Upload</p>
+                                                <input type="file" name="file" id="file_up" onChange={changeIMG} />
+                                            </span>
+
+                                        </Box>
+                                        {form.setValue("img", avatar)}
+
+                                        {/* <Box className='inp'>
+                                            <InputField name="asd" label="Upload File" form={form} />
+                                        </Box> */}
+
+                                    </Grid>
+
 
 
                             </Grid>
@@ -125,11 +171,10 @@ function QuestionForm1(props) {
                                         type="submit"
                                         // className={classes.submit}
                                         variant="contained"
-                                        color="primary"
-
-                                        size="large"
+                                        color="secondary"
+                                        
                                     >
-                                        {editMode ? "Edit Topic" : "Add Topic"}
+                                        {editMode ? "Edit Question" : "Add Question"}
                                     </Button>
                                 </Box>
                             </Grid>                                

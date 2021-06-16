@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useRouteMatch } from 'react-router';
+import { useHistory, useRouteMatch } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import TopicForm1 from '../../Form/TopicForm/TopicForm1';
 import { editTopic1 } from 'features/Admin/Slice/TopicSlice';
+import { useSnackbar } from 'notistack';
 
 
 EditTopic1.propTypes = {
@@ -12,7 +13,8 @@ EditTopic1.propTypes = {
 };
 
 function EditTopic1(props) {
-
+    const { enqueueSnackbar } = useSnackbar()
+    const history = useHistory()
     const {
         params: { idTopic },
         url,
@@ -27,6 +29,15 @@ function EditTopic1(props) {
         // }
         const action = editTopic1(values)
         const resultAction = await dispath(action)
+
+        let slipType = resultAction.type.split('/')
+
+        if (slipType[2] == 'fulfilled') {
+          history.goBack()
+          enqueueSnackbar('Edit Topic Successfully', { variant: 'success' })
+        } else {
+          enqueueSnackbar('Edit Topic Not Successfully', { variant: 'error' })
+        }
     
     };
 

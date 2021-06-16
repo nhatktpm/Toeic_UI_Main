@@ -1,9 +1,16 @@
-import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
-import React from 'react';
+import { Avatar, Box, Button, Container, Grid, makeStyles, Menu, MenuItem } from '@material-ui/core';
+import { logout } from 'features/Auth/userSlice';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import '../NavBar/index.css';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Login from 'features/Auth/components/Login';
 
 
 // onClick={() => scroll.scrollToTop()}    Scroll to top
@@ -24,6 +31,40 @@ function NavBar(props) {
 
     const classes = useStyles();
 
+    const loginUser = useSelector(state => state.user.current)
+
+    const islogin = !!loginUser.email
+
+    const dispatch = useDispatch()
+
+    const [open, setOpen] = useState(false);
+    const [mode, setMode] = useState();
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleUserClick = (e) => {
+        setAnchorEl(e.currentTarget);
+    };
+
+    const handleCloseMenu = () => {
+        setAnchorEl(null);
+    };
+
+    const handleLogoutClick = () => {
+        const action = logout();
+        dispatch(action);
+    };
+
+
+
+
     return (
         <Box className='nav'>
             <Container disableGutters maxWidth="lg">
@@ -39,11 +80,22 @@ function NavBar(props) {
                             <Box className='contai-link'>
 
                                 <Box>
-                                    <NavLink to="/list-part" className={classes.link}>
-                                        <Box className='nav-link'>
-                                            <span className='link-text'>Toeic</span>
+                                    <Box >
+                                        <Box className='nav-link toeic-cha'>
+                                            <NavLink to="/list-part" className={classes.link}>  <span className='link-text'>Toeic</span></NavLink>
+                                            {/* 
+                                            <Box className='toeic-child'>
+                                                <Box>
+                                                    <NavLink to="asdasdasd"> <span className='link-text  sub-menu' >Part 1</span> </NavLink>
+                                                    <NavLink to="asdasda"> <span className='link-text sub-menu' >Part 2</span> </NavLink>
+                                                    <NavLink to="asdasdasd"> <span className='link-text sub-menu' >Part 3</span> </NavLink>
+                                                    <NavLink to="asdasda"> <span className='link-text sub-menu' >Part 4</span> </NavLink>
+
+                                                </Box>
+                                            </Box> */}
+
                                         </Box>
-                                    </NavLink>
+                                    </Box>
                                 </Box>
 
                                 <Box>
@@ -81,24 +133,57 @@ function NavBar(props) {
                         </Grid>
                         <Grid item lg={2} >
                             <Box className='auth'>
-                                {true ?
-                                    <Button variant="outlined" color="secondary">
+                                {islogin ?
+                                    <Box className='nav-auth'>
+                                    <Avatar src={`${loginUser.img}`} onClick={handleUserClick}></Avatar>
+                                    <Box ml={1}>Nguyễn Trường Nhật</Box>
+                                     </Box>
+                                    :
+                                    <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
                                         Sing In/Register
                                     </Button>
-                                    :
-                                    <Box className='nav-auth'><Avatar>H</Avatar> </Box>
                                 }
-
-
                             </Box>
                         </Grid>
+                        <Menu
+                            keepMounted
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleCloseMenu}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            getContentAnchorEl={null}
+                        >
+                            <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
+                            <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+                        </Menu>
+
+                        <Dialog disableBackdropClick
+                            disableEscapeKeyDown open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                            <DialogContent>
+                                <Login closeDialog={handleClose} />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="primary">
+                                    Cancel
+                                </Button>
+
+                            </DialogActions>
+                        </Dialog>
+
+
+
                     </Grid>
                 </Box>
 
             </Container>
-
-
-
         </Box>
     );
 }

@@ -1,6 +1,8 @@
 import {
+    Avatar,
     Box, Container, Grid, makeStyles, Typography
 } from '@material-ui/core';
+import ComeOn from 'features/Admin/components/ComeOn';
 import Question1 from 'features/Admin/components/List/ListQuestion/Question1';
 import Topic1 from 'features/Admin/components/List/ListTopic/Topic1';
 import Topic2 from 'features/Admin/components/List/ListTopic/Topic2';
@@ -10,6 +12,7 @@ import EditQuestion1 from 'features/Admin/components/Questions/Question1/EditQue
 import AddTopic2 from 'features/Admin/components/Topics/Topic-2/AddTopic2';
 import EditTopic2 from 'features/Admin/components/Topics/Topic-2/EditTopic2';
 import ListTrash from 'features/Admin/components/Trash/ListTrasp';
+import ListUserInAdmin from 'features/Admin/components/User';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import Part from '../../components/List/ListPart';
@@ -44,7 +47,7 @@ const DashBoard = props => {
         },
         content: {
             height: 'auto',
-            minHeight : '90vh'
+            minHeight: '90vh'
         },
         bg: {
             backgroundColor: '#eeeeee'
@@ -69,8 +72,8 @@ const DashBoard = props => {
                                     <Box className='ad-brand' >
                                         <Typography variant='h5'>DashBoard </Typography>
                                     </Box>
-                                    <Box className='ad-find'>Tim kiem</Box>
-                                    <Box className='ad-user'>User</Box>
+                                    {/* <Box className='ad-find'>Tim kiem</Box> */}
+                                    <Box className='ad-user' mr='25px'> <Avatar alt="Remy Sharp" src='https://yt3.ggpht.com/yti/ANoDKi65P3NC5SX7m2soa8NvdmR0U9_dK0B-P4ApCeaLFA=s88-c-k-c0x00ffffff-no-rj-mo' /></Box>
                                 </Box>
                             </Box>
                         </Grid>
@@ -80,7 +83,7 @@ const DashBoard = props => {
                                 <Box className={classes.content}>
                                     <Switch>
                                         <Route path={match.url} exact>
-
+                                            <ComeOn />
                                         </Route>
                                         <Route path={`${match.url}/list-part`}>
                                             <Part />
@@ -128,6 +131,11 @@ const DashBoard = props => {
                                         <Route path={`${match.url}/trash`}>
                                             <ListTrash />
                                         </Route>
+
+                                        <Route path={`${match.url}/list-user`}>
+                                            <ListUserInAdmin />
+                                        </Route>
+
 
                                     </Switch>
                                 </Box>

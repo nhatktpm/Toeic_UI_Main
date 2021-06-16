@@ -9,6 +9,7 @@ import { useHistory, useRouteMatch } from 'react-router';
 
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { useSnackbar } from 'notistack';
 
 function Question1(props) {
 
@@ -19,7 +20,7 @@ function Question1(props) {
 
   const history = useHistory();
   const dispath = useDispatch()
-
+  const { enqueueSnackbar } = useSnackbar()
 
 
   const handleEditQuestion = (idTopic) => {
@@ -29,6 +30,13 @@ function Question1(props) {
   const handleDeleteQuestion = async (idQues) => {
     const action = deleteQuestion1(idQues)
     const resultAction = await dispath(action)
+
+    let slipType = resultAction.type.split('/')
+          if (slipType[2] === 'fulfilled') {
+            enqueueSnackbar('Edit Part Successfully', { variant: 'success' })
+          } else {
+            enqueueSnackbar('Edit Part Not Successfully', { variant: 'error' })
+          }
 
   }
 
@@ -59,7 +67,7 @@ function Question1(props) {
             <Box className='table-title'>
               <Box className='content-title'>
                 <AcUnitIcon className='table-icon' />
-                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                <Typography variant='h5' className='part-text'> Manage Question</Typography>
               </Box>
             </Box>
             <Box className='button-add'>
@@ -70,7 +78,7 @@ function Question1(props) {
                 startIcon={<AddCircleIcon />}
                 onClick={() => handleAddQuestion(idTopic)}
               >
-                Add Topic
+                Add Question
           </Button>
             </Box>
             <Box className='table-body'>
@@ -80,7 +88,7 @@ function Question1(props) {
                     <th>#</th>
                     <th>IMG</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>Answer</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -91,8 +99,8 @@ function Question1(props) {
                     <tr key={question._id}>
                       <td>{i++}</td>
                       <td> <Box > <img className="img-in-table" src={`${question.img}`} alt='IMG Question' /> </Box>  </td>
-                      <td>{question.nameTopic} </td>
-                      <td>{question.descripTopic}</td>
+                      <td>{question.cauhoi} </td>
+                      <td>{question.dapandung}</td>
                       <td>
                         <Button onClick={() => handleEditQuestion(question._id)}>Edit</Button>
                         <Button onClick={() => handleDeleteQuestion(question._id)}>Delete</Button>

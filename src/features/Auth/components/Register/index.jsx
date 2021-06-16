@@ -1,3 +1,4 @@
+import { Box, Grid } from '@material-ui/core';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { register } from 'features/Auth/userSlice';
 import { useSnackbar } from 'notistack';
@@ -7,40 +8,41 @@ import { useDispatch } from 'react-redux';
 import RegisterForm from '../RegisterForm';
 
 Register.propTypes = {
-  closeDialog: PropTypes.func,
+    closeDialog: PropTypes.func,
 };
 
 function Register(props) {
-  const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
 
-  const handleSubmit = async (values) => {
-    try {
-      // auto set username = email
-      
+    const handleSubmit = async (values) => {
+        try {
+            // auto set username = email
 
-      const action = register(values);
-      const resultAction = await dispatch(action);
-      unwrapResult(resultAction);
 
-      // close dialog
-      const { closeDialog } = props;
-      if (closeDialog) {
-        closeDialog();
-      }
+            // const action = register(values);
+            // const resultAction = await dispatch(action);
+            // unwrapResult(resultAction);
 
-      enqueueSnackbar('Register successfully!!! 🎉', { variant: 'success' });
-    } catch (error) {
-      console.log('Failed to register:', error);
-      enqueueSnackbar(error.message, { variant: 'error' });
-    }
-  };
+            // // close dialog
+            // const { closeDialog } = props;
+            // if (closeDialog) {
+            //     closeDialog();
+            // }
 
-  return (
-    <div>
-      <RegisterForm onSubmit={handleSubmit} />
-    </div>
-  );
+            // enqueueSnackbar('Register Success! Please activate your email to start. ', { variant: 'success' });
+            enqueueSnackbar('Email already exists !. ', { variant: 'warning' });
+        } catch (error) {
+            console.log('Failed to register:', error);
+            enqueueSnackbar(error.message, { variant: 'error' });
+        }
+    };
+
+    return (
+        <div>
+            <RegisterForm onSubmit={handleSubmit} />
+        </div>
+    );
 }
 
 export default Register;

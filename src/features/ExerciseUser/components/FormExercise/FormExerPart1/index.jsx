@@ -104,7 +104,7 @@ function ExerPart1Form(props) {
 
                         </Box>
 
-                        <Box my={2}>Sau khi hoàn thiện bài làm hãy bấm vào nút nộp bài bên dưới</Box>
+                        <Box my={2} className='saukhihoanthien'>Sau khi hoàn thiện bài làm hãy bấm vào nút nộp bài bên dưới</Box>
 
                         <Box my={2} className={classes.btnSubmit}>
                             <Button

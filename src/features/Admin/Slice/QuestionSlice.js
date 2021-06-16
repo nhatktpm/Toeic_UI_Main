@@ -27,9 +27,9 @@ export const editQuestion1 = createAsyncThunk('admin/editQuestion1', async (para
 });
 
 export const deleteQuestion1 = createAsyncThunk('admin/deleteQuestion1', async (id) => {
-    const data = await QuestionApi.add(id)
+    const data = await QuestionApi.remove(id)
     console.log(data);
-    return data.data.topic;
+    return id;
 });
 
 const TopicSlice = createSlice({
@@ -61,7 +61,7 @@ const TopicSlice = createSlice({
         [deleteQuestion1.fulfilled]: (state, action) => {
 
             let id = action.payload
-
+            console.log(id);
             state.listQuestion = state.listQuestion.filter(topic => topic._id !== id)
 
         },

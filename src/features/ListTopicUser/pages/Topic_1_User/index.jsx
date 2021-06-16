@@ -4,6 +4,7 @@ import { computeHeadingLevel } from '@testing-library/dom';
 import listPartApi from 'api/listPartApi';
 import listTopicAPI from 'api/listTopicAPI';
 import PartUser from 'features/ListPartUser/pages/PartUser';
+import SearchTopic from 'features/ListTopicUser/component/Search';
 import TopicItem from 'features/ListTopicUser/component/TopicItem';
 import NavBar from 'features/User/components/NavBar';
 import React, { useEffect, useState } from 'react';
@@ -58,9 +59,10 @@ function Topic_1_User(props) {
 
             <Box className='a'>
                 <Container maxWidth="lg">
-                    <Box>
-                        gioi thieu
-                  </Box>
+                    <Box className='contai-fill'>
+                        <Box> <SearchTopic /></Box>
+                        <Box> fillter</Box>
+                    </Box>
                 </Container>
             </Box>
 

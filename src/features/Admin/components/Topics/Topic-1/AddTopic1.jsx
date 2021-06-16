@@ -29,7 +29,7 @@ function AddTopic1(props) {
 
         if (slipType[2] == 'fulfilled') {
             history.goBack()
-            enqueueSnackbar('Edit Part Successfully', { variant: 'success' })
+            enqueueSnackbar('Add Topic Successfully', { variant: 'success' })
         } else {
             enqueueSnackbar('Edit Part Not Successfully', { variant: 'error' })
         }

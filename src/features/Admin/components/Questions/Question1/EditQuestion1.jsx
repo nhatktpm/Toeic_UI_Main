@@ -7,6 +7,7 @@ import TopicForm1 from '../../Form/TopicForm/TopicForm1';
 import { addTopic1 } from 'features/Admin/Slice/TopicSlice';
 import QuestionForm1 from '../../Form/QuestionForm/QuestionForm1';
 import { editQuestion1 } from 'features/Admin/Slice/QuestionSlice';
+import { useSnackbar } from 'notistack';
 
 
 
@@ -17,13 +18,22 @@ EditQuestion1.propTypes = {
 function EditQuestion1(props) {
     const dispath = useDispatch()
     const history = useHistory()
+    const { enqueueSnackbar } = useSnackbar()
 
     const handleAddQuestionFormSubmit = async (values) => {
 
-    console.log(values);
+        console.log(values);
         const action = editQuestion1(values)
-        const resultAction = await dispath(action)   
-     
+        const resultAction = await dispath(action)
+        let slipType = resultAction.type.split('/')
+
+        if (slipType[2] == 'fulfilled') {
+            history.goBack()
+            enqueueSnackbar('Edit Topic Successfully', { variant: 'success' })
+        } else {
+            enqueueSnackbar('Edit Topic Not Successfully', { variant: 'error' })
+        }
+
 
     };
     const {

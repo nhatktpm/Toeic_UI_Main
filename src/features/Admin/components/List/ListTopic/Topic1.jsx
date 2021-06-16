@@ -17,8 +17,13 @@ import './index.css';
 function Topic1(props) {
 
   const {
-    params: { idPart }
+    params: { idPart },url
   } = useRouteMatch();
+
+  
+   ///////////////// ////////////// let slug = url.split('/')[2]
+  
+
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -59,7 +64,7 @@ function Topic1(props) {
 
           let slipType = resultAction.type.split('/')
           if (slipType[2] === 'fulfilled') {
-            enqueueSnackbar('Edit Part Successfully', { variant: 'success' })
+            enqueueSnackbar('Delete Topic Successfully', { variant: 'success' })
           } else {
             enqueueSnackbar('Edit Part Not Successfully', { variant: 'error' })
           }
@@ -92,7 +97,7 @@ function Topic1(props) {
           <td>{i++}</td>
           <td><Box > <img className="img-in-table" src={`${topic.img}`} alt='IMG Topic' />  </Box></td>
           <td> {topic.nameTopic}</td>
-          <td>{topic.descripTopic}</td>
+          {/* <td>{topic.descripTopic}</td> */}
           <td>
             <Button onClick={() => handleEditTopic(topic._id)}>Edit</Button>
             <Button onClick={() => handlDeleteTopic(topic._id)}>Delete</Button>
@@ -121,7 +126,7 @@ function Topic1(props) {
             <Box className='table-title'>
               <Box className='content-title'>
                 <AcUnitIcon className='table-icon' />
-                <Typography variant='h5' className='part-text'> This Is My Gu</Typography>
+                <Typography variant='h5' className='part-text'> Manage Topic</Typography>
               </Box>
             </Box>
             <Box className='button-add'>
@@ -142,7 +147,7 @@ function Topic1(props) {
                     <th>#</th>
                     <th>IMG</th>
                     <th>Name</th>
-                    <th>Description</th>
+                  
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -165,10 +170,10 @@ function Topic1(props) {
 
                 </tbody>
               </table>
-              <Box>
+              <Box className='pagi-list-topic'>
                 <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
+                  previousLabel={"<"}
+                  nextLabel={">"}
                   pageCount={pageCount}
                   onPageChange={changePage}
                   containerClassName={"paginationBttns"}

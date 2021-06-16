@@ -2,9 +2,14 @@ import { Avatar, Box, Container, TextField } from '@material-ui/core';
 
 import React from 'react';
 import Comment from '../Comment';
+import { allComment } from '../dat/dattt';
 import './index.css'
 
+
 function AllComment(props) {
+
+
+
     return (
         <div className='layout-all-comment'>
             <Box mb={3}>
@@ -15,10 +20,10 @@ function AllComment(props) {
             </Box>
 
             <Box>
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
+                {allComment.map((comment) => {
+                    return <Comment comment={comment} />
+                })}
+                
             </Box>
 
 

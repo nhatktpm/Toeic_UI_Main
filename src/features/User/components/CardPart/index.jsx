@@ -20,7 +20,7 @@ function CardPart(props) {
                         {part.descrip}
                      </Box>
                     <Box className='card-action'>
-                        <Box className='ac action-1'> Mô Tả </Box>
+                        <Box className='ac action-1'>Chi Tiết </Box>
 
                         <Box className='ac action-2'>Bài Tập</Box>
                         <Box className='ac action-3'> Tác giả</Box>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../Sidebar/sidebar.css'
 import { Box, Typography } from '@material-ui/core';
 
@@ -36,7 +36,7 @@ export default function SideBar() {
       <Box>
         <Box className='ad-logo-contai' >
           <Typography variant='h5' className='ad-textlogo'>
-            INU EngLish
+            CourseLog EngLish
           </Typography>
         </Box>
       </Box>
@@ -44,28 +44,34 @@ export default function SideBar() {
         <nav>
           <ul>
             <li className='sb-item'> <Box>
-              <Link className='link'><Acco className='mr-icon' color="secondary" /> Manager User</Link>
+              <Link to="/admin/list-user" className='link'><Acco className='mr-icon' color="secondary" /> Manager User</Link>
             </Box></li>
 
             <li className='sb-item'> <Box>
               <Link to="/admin/list-part" className='link'><Acco className='mr-icon' color="secondary" />  Manager Part</Link>
             </Box></li>
 
-            <li className='sb-item'> <Box>
-              <Link className='link'><Acco className='mr-icon' color="secondary" />  Manager Topic</Link>
-            </Box></li>
+            <li className='sb-item'>
+              <Box>
+                <Link className='link'><Acco className='mr-icon' color="secondary" />  Manager Topic</Link>
+              </Box>              
+            </li>
+
+            <li className='sb-item'>
+              <Box>
+                <Link className='link'>
+                  <Acco className='mr-icon' color="secondary" />  Manager Contact</Link>
+
+              </Box>
+            </li>
 
             <li className='sb-item'> <Box>
-              <Link className='link'><Acco className='mr-icon' color="secondary" />  Manager Contact</Link>
+              <Link to="/admin/trash" className='link'><Acco className='mr-icon' color="secondary" />  Manager Trash</Link>
             </Box></li>
 
-            <li className='sb-item'> <Box>
-              <Link  to="/admin/trash" className='link'><Acco className='mr-icon' color="secondary" />  Manager Trash</Link>
-            </Box></li>
-
-            <li className='sb-item'> <Box>
+            {/* <li className='sb-item'> <Box>
               <NavLink  to="/admin/trash" className='link'><Acco className='mr-icon' color="secondary" />  Manager Trash</NavLink>
-            </Box></li>
+            </Box></li> */}
 
           </ul>
         </nav>

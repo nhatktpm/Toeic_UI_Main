@@ -37,7 +37,7 @@ function PartItem(props) {
                 <Box>
                     <Box className='contai-part-info'>
                     <Box className="free-part"> Free</Box>
-                        <Box mb={2} ml={3} className='part-date'> ngay 1 thang 1</Box>
+                        {/* <Box mb={2} ml={3} className='part-date'> ngay 1 thang 1</Box> */}
                         <Box mb={1} className='part-name'> {part.name}</Box>
                         <Box mb={2} className='part-social'>
                             <Box >

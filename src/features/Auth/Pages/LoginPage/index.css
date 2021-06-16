@@ -1,5 +1,26 @@
-.contai-login {
-    width: 30%;
-    margin: 80px auto;
-
+.bg-login-page{
+    background-color: #fdebe1;
+    height: 100vh;
 }
+
+.contai-login{
+    position: relative;
+    top: 80px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+
+    box-shadow: 0px 10px 30px rgb(19 14 57 / 9%);
+}
+
+.left-login{
+    
+}
+.left-login img{
+    height: 580px;
+    width: 600px;
+    border-radius: 10px;
+}
+.f-login{
+width: 400px;
+}
+
